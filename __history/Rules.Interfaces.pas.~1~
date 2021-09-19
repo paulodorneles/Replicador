@@ -1,0 +1,21 @@
+unit Rules.Interfaces;
+
+interface
+
+uses
+  System.Generics.Collections;
+
+type
+ // iRules = interface;
+
+  iRules = interface
+    ['{CFDD8C51-9887-4D4B-BF6E-3FE42D56987C}']
+    function Generate : iRules;
+    function Update : iRules;
+    function Delete : iRules;
+  end;
+
+
+implementation
+
+end.

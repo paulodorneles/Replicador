@@ -1,0 +1,3435 @@
+object dmComponentes: TdmComponentes
+  OldCreateOrder = False
+  OnCreate = DataModuleCreate
+  Height = 632
+  Width = 805
+  object TrayIcon1: TTrayIcon
+    BalloonFlags = bfInfo
+    Left = 730
+    Top = 47
+  end
+  object FDConnection: TFDConnection
+    Params.Strings = (
+      'Database=192.168.1.7:F:\Dados\Comercial\arqccs.fdb'
+      'User_Name=SYSDBA'
+      'Password=masterkey'
+      'DriverID=FB')
+    LoginPrompt = False
+    Left = 56
+    Top = 32
+  end
+  object FDPhysFBDriverLink1: TFDPhysFBDriverLink
+    Left = 55
+    Top = 88
+  end
+  object FDGUIxWaitCursor1: TFDGUIxWaitCursor
+    Provider = 'Forms'
+    Left = 55
+    Top = 160
+  end
+  object FDEventAlerter1: TFDEventAlerter
+    Names.Strings = (
+      'REPLICAR')
+    Left = 56
+    Top = 224
+  end
+  object qryReplication: TFDQuery
+    Connection = FDConnection
+    SQL.Strings = (
+      '  SELECT ID, DADOS, TIPO, TABELA'
+      '  FROM REPLICACAO'
+      ''
+      ''
+      '')
+    Left = 339
+    Top = 33
+    object qryReplicationID: TStringField
+      FieldName = 'ID'
+      Origin = 'ID'
+    end
+    object qryReplicationDADOS: TStringField
+      FieldName = 'DADOS'
+      Origin = 'DADOS'
+    end
+    object qryReplicationTIPO: TStringField
+      FieldName = 'TIPO'
+      Origin = 'TIPO'
+      FixedChar = True
+      Size = 2
+    end
+    object qryReplicationTABELA: TStringField
+      FieldName = 'TABELA'
+      Origin = 'TABELA'
+    end
+  end
+  object dspReplication: TDataSetProvider
+    DataSet = qryReplication
+    Left = 339
+    Top = 97
+  end
+  object cdsReplication: TClientDataSet
+    Aggregates = <>
+    Params = <>
+    ProviderName = 'dspReplication'
+    Left = 339
+    Top = 161
+    object cdsReplicationID: TStringField
+      FieldName = 'ID'
+    end
+    object cdsReplicationDADOS: TStringField
+      FieldName = 'DADOS'
+    end
+    object cdsReplicationTIPO: TStringField
+      FieldName = 'TIPO'
+      FixedChar = True
+      Size = 2
+    end
+    object cdsReplicationTABELA: TStringField
+      FieldName = 'TABELA'
+    end
+  end
+  object cdsClient: TClientDataSet
+    Aggregates = <>
+    Params = <>
+    ProviderName = 'dspClient'
+    Left = 253
+    Top = 162
+    object cdsClientCODCLIENTE: TIntegerField
+      FieldName = 'CODCLIENTE'
+      Required = True
+    end
+    object cdsClientCNPJCPF: TStringField
+      FieldName = 'CNPJCPF'
+      Size = 14
+    end
+    object cdsClientNCOMPRADOR: TStringField
+      FieldName = 'NCOMPRADOR'
+      Size = 30
+    end
+    object cdsClientNFANTASIA: TStringField
+      FieldName = 'NFANTASIA'
+      Size = 35
+    end
+    object cdsClientCONTACONTABIL: TStringField
+      FieldName = 'CONTACONTABIL'
+    end
+    object cdsClientTIPO: TIntegerField
+      FieldName = 'TIPO'
+    end
+    object cdsClientREGIAO: TStringField
+      FieldName = 'REGIAO'
+      Size = 4
+    end
+    object cdsClientLIMITE: TBCDField
+      FieldName = 'LIMITE'
+      Precision = 18
+      Size = 2
+    end
+    object cdsClientTABELA: TStringField
+      FieldName = 'TABELA'
+      FixedChar = True
+      Size = 1
+    end
+    object cdsClientNUMBANCO: TIntegerField
+      FieldName = 'NUMBANCO'
+    end
+    object cdsClientNUMAGENCIA: TIntegerField
+      FieldName = 'NUMAGENCIA'
+    end
+    object cdsClientREGJUNTA: TStringField
+      FieldName = 'REGJUNTA'
+      Size = 10
+    end
+    object cdsClientNUMREGJUNTA: TStringField
+      FieldName = 'NUMREGJUNTA'
+      Size = 15
+    end
+    object cdsClientDATAREGJUNTA: TDateField
+      FieldName = 'DATAREGJUNTA'
+    end
+    object cdsClientCAPITALREG: TBCDField
+      FieldName = 'CAPITALREG'
+      Precision = 18
+      Size = 2
+    end
+    object cdsClientNSOCIO01: TStringField
+      FieldName = 'NSOCIO01'
+      Size = 40
+    end
+    object cdsClientCPFSOCIO01: TStringField
+      FieldName = 'CPFSOCIO01'
+      Size = 14
+    end
+    object cdsClientDATANASCSOCIO01: TDateField
+      FieldName = 'DATANASCSOCIO01'
+    end
+    object cdsClientNSOCIO02: TStringField
+      FieldName = 'NSOCIO02'
+      Size = 40
+    end
+    object cdsClientCPFSOCIO02: TStringField
+      FieldName = 'CPFSOCIO02'
+      Size = 14
+    end
+    object cdsClientDATANASCSOCIO02: TDateField
+      FieldName = 'DATANASCSOCIO02'
+    end
+    object cdsClientNSOCIO03: TStringField
+      FieldName = 'NSOCIO03'
+      Size = 40
+    end
+    object cdsClientCPFSOCIO03: TStringField
+      FieldName = 'CPFSOCIO03'
+      Size = 14
+    end
+    object cdsClientDATANASCSOCIO03: TDateField
+      FieldName = 'DATANASCSOCIO03'
+    end
+    object cdsClientINFSPC: TStringField
+      FieldName = 'INFSPC'
+      Size = 60
+    end
+    object cdsClientINFSCI: TStringField
+      FieldName = 'INFSCI'
+      Size = 60
+    end
+    object cdsClientINFSERASA: TStringField
+      FieldName = 'INFSERASA'
+      Size = 30
+    end
+    object cdsClientINFEMPRESA01: TStringField
+      FieldName = 'INFEMPRESA01'
+      Size = 30
+    end
+    object cdsClientINFDDD01: TIntegerField
+      FieldName = 'INFDDD01'
+    end
+    object cdsClientINFFONE01: TStringField
+      FieldName = 'INFFONE01'
+      Size = 15
+    end
+    object cdsClientINFCONTATO01: TStringField
+      FieldName = 'INFCONTATO01'
+    end
+    object cdsClientINFDATACONSULTA01: TDateField
+      FieldName = 'INFDATACONSULTA01'
+    end
+    object cdsClientINFCLIENTEDESDE01: TStringField
+      FieldName = 'INFCLIENTEDESDE01'
+      Size = 10
+    end
+    object cdsClientINFPGVENCTO01: TStringField
+      FieldName = 'INFPGVENCTO01'
+      FixedChar = True
+      Size = 1
+    end
+    object cdsClientINFVLMAIORFATURA01: TBCDField
+      FieldName = 'INFVLMAIORFATURA01'
+      Precision = 18
+      Size = 2
+    end
+    object cdsClientINFDATAMAIORFATURA01: TDateField
+      FieldName = 'INFDATAMAIORFATURA01'
+    end
+    object cdsClientINFVLULTCOMPRA01: TBCDField
+      FieldName = 'INFVLULTCOMPRA01'
+      Precision = 18
+      Size = 2
+    end
+    object cdsClientINFDATAULTCOMPRA01: TDateField
+      FieldName = 'INFDATAULTCOMPRA01'
+    end
+    object cdsClientINFCONCEITO01: TStringField
+      FieldName = 'INFCONCEITO01'
+      Size = 30
+    end
+    object cdsClientINFEMPRESA02: TStringField
+      FieldName = 'INFEMPRESA02'
+      Size = 30
+    end
+    object cdsClientINFDDD02: TIntegerField
+      FieldName = 'INFDDD02'
+    end
+    object cdsClientINFFONE02: TStringField
+      FieldName = 'INFFONE02'
+      Size = 15
+    end
+    object cdsClientINFCONTATO02: TStringField
+      FieldName = 'INFCONTATO02'
+    end
+    object cdsClientINFDATACONSULTA02: TDateField
+      FieldName = 'INFDATACONSULTA02'
+    end
+    object cdsClientINFCLIENTEDESDE02: TStringField
+      FieldName = 'INFCLIENTEDESDE02'
+      Size = 10
+    end
+    object cdsClientINFPGVENCTO02: TStringField
+      FieldName = 'INFPGVENCTO02'
+      FixedChar = True
+      Size = 1
+    end
+    object cdsClientINFVLMAIORFATURA02: TBCDField
+      FieldName = 'INFVLMAIORFATURA02'
+      Precision = 18
+      Size = 2
+    end
+    object cdsClientINFDATAMAIORFATURA02: TDateField
+      FieldName = 'INFDATAMAIORFATURA02'
+    end
+    object cdsClientINFVLULTCOMPRA02: TBCDField
+      FieldName = 'INFVLULTCOMPRA02'
+      Precision = 18
+      Size = 2
+    end
+    object cdsClientINFDATAULTCOMPRA02: TDateField
+      FieldName = 'INFDATAULTCOMPRA02'
+    end
+    object cdsClientINFCONCEITO02: TStringField
+      FieldName = 'INFCONCEITO02'
+      Size = 30
+    end
+    object cdsClientINFEMPRESA03: TStringField
+      FieldName = 'INFEMPRESA03'
+      Size = 30
+    end
+    object cdsClientINFDDD03: TIntegerField
+      FieldName = 'INFDDD03'
+    end
+    object cdsClientINFFONE03: TStringField
+      FieldName = 'INFFONE03'
+      Size = 15
+    end
+    object cdsClientINFCONTATO03: TStringField
+      FieldName = 'INFCONTATO03'
+    end
+    object cdsClientINFDATACONSULTA03: TDateField
+      FieldName = 'INFDATACONSULTA03'
+    end
+    object cdsClientINFCLIENTEDESDE03: TStringField
+      FieldName = 'INFCLIENTEDESDE03'
+      Size = 10
+    end
+    object cdsClientINFPGVENCTO03: TStringField
+      FieldName = 'INFPGVENCTO03'
+      FixedChar = True
+      Size = 1
+    end
+    object cdsClientINFVLMAIORFATURA03: TBCDField
+      FieldName = 'INFVLMAIORFATURA03'
+      Precision = 18
+      Size = 2
+    end
+    object cdsClientINFDATAMAIORFATURA03: TDateField
+      FieldName = 'INFDATAMAIORFATURA03'
+    end
+    object cdsClientINFVLULTCOMPRA03: TBCDField
+      FieldName = 'INFVLULTCOMPRA03'
+      Precision = 18
+      Size = 2
+    end
+    object cdsClientINFDATAULTCOMPRA03: TDateField
+      FieldName = 'INFDATAULTCOMPRA03'
+    end
+    object cdsClientINFCONCEITO03: TStringField
+      FieldName = 'INFCONCEITO03'
+      Size = 30
+    end
+    object cdsClientDATAULTMOV: TDateField
+      FieldName = 'DATAULTMOV'
+    end
+    object cdsClientSITUACAO: TIntegerField
+      FieldName = 'SITUACAO'
+    end
+    object cdsClientREG: TIntegerField
+      FieldName = 'REG'
+    end
+    object cdsClientCODVENDEDOR: TIntegerField
+      FieldName = 'CODVENDEDOR'
+    end
+    object cdsClientCODCONDPG: TIntegerField
+      FieldName = 'CODCONDPG'
+    end
+    object cdsClientUSUARIO: TStringField
+      FieldName = 'USUARIO'
+      Size = 15
+    end
+    object cdsClientDATACADASTRO: TStringField
+      FieldName = 'DATACADASTRO'
+      Size = 10
+    end
+    object cdsClientOBS: TStringField
+      FieldName = 'OBS'
+      Size = 1000
+    end
+    object cdsClientCODACESSOR: TIntegerField
+      FieldName = 'CODACESSOR'
+    end
+    object cdsClientTPCORRESPONDENCIA: TIntegerField
+      FieldName = 'TPCORRESPONDENCIA'
+    end
+    object cdsClientINSCESTAD: TStringField
+      FieldName = 'INSCESTAD'
+    end
+    object cdsClientCONTA: TStringField
+      FieldName = 'CONTA'
+    end
+    object cdsClientINFEMPRESA04: TStringField
+      FieldName = 'INFEMPRESA04'
+      Size = 30
+    end
+    object cdsClientINFDDD04: TIntegerField
+      FieldName = 'INFDDD04'
+    end
+    object cdsClientINFFONE04: TStringField
+      FieldName = 'INFFONE04'
+      Size = 15
+    end
+    object cdsClientINFCONTATO04: TStringField
+      FieldName = 'INFCONTATO04'
+    end
+    object cdsClientINFDATACONSULTA04: TDateField
+      FieldName = 'INFDATACONSULTA04'
+    end
+    object cdsClientINFCLIENTEDESDE04: TStringField
+      FieldName = 'INFCLIENTEDESDE04'
+      Size = 10
+    end
+    object cdsClientINFPGVENCTO04: TStringField
+      FieldName = 'INFPGVENCTO04'
+      FixedChar = True
+      Size = 1
+    end
+    object cdsClientINFVLMAIORFATURA04: TBCDField
+      FieldName = 'INFVLMAIORFATURA04'
+      Precision = 18
+      Size = 2
+    end
+    object cdsClientINFDATAMAIORFATURA04: TDateField
+      FieldName = 'INFDATAMAIORFATURA04'
+    end
+    object cdsClientINFVLULTCOMPRA04: TBCDField
+      FieldName = 'INFVLULTCOMPRA04'
+      Precision = 18
+      Size = 2
+    end
+    object cdsClientINFDATAULTCOMPRA04: TDateField
+      FieldName = 'INFDATAULTCOMPRA04'
+    end
+    object cdsClientINFCONCEITO04: TStringField
+      FieldName = 'INFCONCEITO04'
+      Size = 30
+    end
+    object cdsClientINFEMPRESA05: TStringField
+      FieldName = 'INFEMPRESA05'
+      Size = 30
+    end
+    object cdsClientINFDDD05: TIntegerField
+      FieldName = 'INFDDD05'
+    end
+    object cdsClientINFFONE05: TStringField
+      FieldName = 'INFFONE05'
+      Size = 15
+    end
+    object cdsClientINFCONTATO05: TStringField
+      FieldName = 'INFCONTATO05'
+    end
+    object cdsClientINFDATACONSULTA05: TDateField
+      FieldName = 'INFDATACONSULTA05'
+    end
+    object cdsClientINFCLIENTEDESDE05: TStringField
+      FieldName = 'INFCLIENTEDESDE05'
+      Size = 10
+    end
+    object cdsClientINFPGVENCTO05: TStringField
+      FieldName = 'INFPGVENCTO05'
+      FixedChar = True
+      Size = 1
+    end
+    object cdsClientINFVLMAIORFATURA05: TBCDField
+      FieldName = 'INFVLMAIORFATURA05'
+      Precision = 18
+      Size = 2
+    end
+    object cdsClientINFDATAMAIORFATURA05: TDateField
+      FieldName = 'INFDATAMAIORFATURA05'
+    end
+    object cdsClientINFVLULTCOMPRA05: TBCDField
+      FieldName = 'INFVLULTCOMPRA05'
+      Precision = 18
+      Size = 2
+    end
+    object cdsClientINFDATAULTCOMPRA05: TDateField
+      FieldName = 'INFDATAULTCOMPRA05'
+    end
+    object cdsClientINFCONCEITO05: TStringField
+      FieldName = 'INFCONCEITO05'
+      Size = 30
+    end
+    object cdsClientCLIENTEDESDE: TDateField
+      FieldName = 'CLIENTEDESDE'
+    end
+    object cdsClientSUBSTTRIBUTARIO: TStringField
+      FieldName = 'SUBSTTRIBUTARIO'
+      FixedChar = True
+      Size = 1
+    end
+    object cdsClientCODORIGEM: TIntegerField
+      FieldName = 'CODORIGEM'
+    end
+    object cdsClientSIMPLES: TStringField
+      FieldName = 'SIMPLES'
+      FixedChar = True
+      Size = 1
+    end
+    object cdsClientDISPLAY: TStringField
+      FieldName = 'DISPLAY'
+      FixedChar = True
+      Size = 1
+    end
+    object cdsClientBANCA: TStringField
+      FieldName = 'BANCA'
+      FixedChar = True
+      Size = 1
+    end
+    object cdsClientFATURAMENTO: TStringField
+      FieldName = 'FATURAMENTO'
+      FixedChar = True
+      Size = 1
+    end
+    object cdsClientCODCONDICAO: TIntegerField
+      FieldName = 'CODCONDICAO'
+    end
+    object cdsClientCODCFOP: TIntegerField
+      FieldName = 'CODCFOP'
+    end
+    object cdsClientHOMOLOGADOCECOP: TStringField
+      FieldName = 'HOMOLOGADOCECOP'
+      FixedChar = True
+      Size = 1
+    end
+    object cdsClientCODPESSOA: TIntegerField
+      FieldName = 'CODPESSOA'
+      ReadOnly = True
+    end
+    object cdsClientCNPJCPF_1: TStringField
+      FieldName = 'CNPJCPF_1'
+      ReadOnly = True
+      Size = 14
+    end
+    object cdsClientNOME: TStringField
+      FieldName = 'NOME'
+      ReadOnly = True
+      Size = 50
+    end
+    object cdsClientTIPOPESSOA: TStringField
+      FieldName = 'TIPOPESSOA'
+      ReadOnly = True
+      FixedChar = True
+      Size = 1
+    end
+    object cdsClientCONTATO: TStringField
+      FieldName = 'CONTATO'
+      ReadOnly = True
+      Size = 40
+    end
+    object cdsClientDDD1: TStringField
+      FieldName = 'DDD1'
+      ReadOnly = True
+      Size = 5
+    end
+    object cdsClientFONE1: TStringField
+      FieldName = 'FONE1'
+      ReadOnly = True
+      Size = 9
+    end
+    object cdsClientDDD2: TStringField
+      FieldName = 'DDD2'
+      ReadOnly = True
+      Size = 5
+    end
+    object cdsClientFONE2: TStringField
+      FieldName = 'FONE2'
+      ReadOnly = True
+      Size = 9
+    end
+    object cdsClientDDD3: TStringField
+      FieldName = 'DDD3'
+      ReadOnly = True
+      Size = 5
+    end
+    object cdsClientFONE3: TStringField
+      FieldName = 'FONE3'
+      ReadOnly = True
+      Size = 9
+    end
+    object cdsClientDATANASCIMENTO: TDateField
+      FieldName = 'DATANASCIMENTO'
+      ReadOnly = True
+    end
+    object cdsClientNASCDIAMES: TIntegerField
+      FieldName = 'NASCDIAMES'
+      ReadOnly = True
+    end
+    object cdsClientSEXO: TStringField
+      FieldName = 'SEXO'
+      ReadOnly = True
+      FixedChar = True
+      Size = 1
+    end
+    object cdsClientESTCIVIL: TStringField
+      FieldName = 'ESTCIVIL'
+      ReadOnly = True
+      FixedChar = True
+      Size = 1
+    end
+    object cdsClientNACIONALIDADE: TStringField
+      FieldName = 'NACIONALIDADE'
+      ReadOnly = True
+    end
+    object cdsClientRG: TStringField
+      FieldName = 'RG'
+      ReadOnly = True
+      Size = 15
+    end
+    object cdsClientORGAOEMISSORRG: TStringField
+      FieldName = 'ORGAOEMISSORRG'
+      ReadOnly = True
+      Size = 15
+    end
+    object cdsClientDATAEMISSAORG: TDateField
+      FieldName = 'DATAEMISSAORG'
+      ReadOnly = True
+    end
+    object cdsClientINSCESTADUAL: TStringField
+      FieldName = 'INSCESTADUAL'
+      ReadOnly = True
+      Size = 25
+    end
+    object cdsClientEMAIL: TStringField
+      FieldName = 'EMAIL'
+      ReadOnly = True
+      Size = 60
+    end
+    object cdsClientTRATAMENTO: TStringField
+      FieldName = 'TRATAMENTO'
+      ReadOnly = True
+      Size = 22
+    end
+    object cdsClientDATAULTIMOMOV: TDateField
+      FieldName = 'DATAULTIMOMOV'
+      ReadOnly = True
+    end
+    object cdsClientDATACADASTRO_1: TDateField
+      FieldName = 'DATACADASTRO_1'
+      ReadOnly = True
+    end
+    object cdsClientATUACAO2: TStringField
+      FieldName = 'ATUACAO2'
+      ReadOnly = True
+      Size = 4
+    end
+    object cdsClientATUACAO3: TStringField
+      FieldName = 'ATUACAO3'
+      ReadOnly = True
+      Size = 4
+    end
+    object cdsClientATUACAO4: TStringField
+      FieldName = 'ATUACAO4'
+      ReadOnly = True
+      Size = 4
+    end
+    object cdsClientATUACAO5: TStringField
+      FieldName = 'ATUACAO5'
+      ReadOnly = True
+      Size = 4
+    end
+    object cdsClientENDMDIRETA: TStringField
+      FieldName = 'ENDMDIRETA'
+      ReadOnly = True
+      FixedChar = True
+      Size = 1
+    end
+    object cdsClientREG_1: TIntegerField
+      FieldName = 'REG_1'
+      ReadOnly = True
+    end
+    object cdsClientCODPROFISSAO: TIntegerField
+      FieldName = 'CODPROFISSAO'
+      ReadOnly = True
+    end
+    object cdsClientUSUARIO_1: TStringField
+      FieldName = 'USUARIO_1'
+      ReadOnly = True
+      Size = 15
+    end
+    object cdsClientCODATUACAO: TStringField
+      FieldName = 'CODATUACAO'
+      ReadOnly = True
+      Size = 4
+    end
+    object cdsClientLOGRADOURO: TStringField
+      FieldName = 'LOGRADOURO'
+      ReadOnly = True
+      Size = 50
+    end
+    object cdsClientNUMERO: TStringField
+      FieldName = 'NUMERO'
+      ReadOnly = True
+      Size = 8
+    end
+    object cdsClientCOMPLEMENTO: TStringField
+      FieldName = 'COMPLEMENTO'
+      ReadOnly = True
+      Size = 30
+    end
+    object cdsClientBAIRRO: TStringField
+      FieldName = 'BAIRRO'
+      ReadOnly = True
+      Size = 30
+    end
+    object cdsClientCEP: TStringField
+      FieldName = 'CEP'
+      ReadOnly = True
+      Size = 8
+    end
+    object cdsClientCODCIDADE: TIntegerField
+      FieldName = 'CODCIDADE'
+      ReadOnly = True
+    end
+    object cdsClientLOGRADOURO1: TStringField
+      FieldName = 'LOGRADOURO1'
+      ReadOnly = True
+      Size = 50
+    end
+    object cdsClientNUMERO1: TStringField
+      FieldName = 'NUMERO1'
+      ReadOnly = True
+      Size = 8
+    end
+    object cdsClientCOMPLEMENTO1: TStringField
+      FieldName = 'COMPLEMENTO1'
+      ReadOnly = True
+      Size = 30
+    end
+    object cdsClientBAIRRO1: TStringField
+      FieldName = 'BAIRRO1'
+      ReadOnly = True
+      Size = 30
+    end
+    object cdsClientCEP1: TStringField
+      FieldName = 'CEP1'
+      ReadOnly = True
+      Size = 8
+    end
+    object cdsClientCODCIDADE1: TIntegerField
+      FieldName = 'CODCIDADE1'
+      ReadOnly = True
+    end
+    object cdsClientLOGRADOURO2: TStringField
+      FieldName = 'LOGRADOURO2'
+      ReadOnly = True
+      Size = 50
+    end
+    object cdsClientNUMERO2: TStringField
+      FieldName = 'NUMERO2'
+      ReadOnly = True
+      Size = 8
+    end
+    object cdsClientCOMPLEMENTO2: TStringField
+      FieldName = 'COMPLEMENTO2'
+      ReadOnly = True
+      Size = 30
+    end
+    object cdsClientBAIRRO2: TStringField
+      FieldName = 'BAIRRO2'
+      ReadOnly = True
+      Size = 30
+    end
+    object cdsClientCEP2: TStringField
+      FieldName = 'CEP2'
+      ReadOnly = True
+      Size = 8
+    end
+    object cdsClientCODCIDADE2: TIntegerField
+      FieldName = 'CODCIDADE2'
+      ReadOnly = True
+    end
+    object cdsClientHOMEPAGE: TStringField
+      FieldName = 'HOMEPAGE'
+      ReadOnly = True
+      Size = 60
+    end
+    object cdsClientIESUFRAMA: TStringField
+      FieldName = 'IESUFRAMA'
+      ReadOnly = True
+      Size = 9
+    end
+    object cdsClientSMSFONE1: TStringField
+      FieldName = 'SMSFONE1'
+      ReadOnly = True
+      FixedChar = True
+      Size = 1
+    end
+    object cdsClientSMSFONE2: TStringField
+      FieldName = 'SMSFONE2'
+      ReadOnly = True
+      FixedChar = True
+      Size = 1
+    end
+    object cdsClientSMSFONE3: TStringField
+      FieldName = 'SMSFONE3'
+      ReadOnly = True
+      FixedChar = True
+      Size = 1
+    end
+    object cdsClientSMSFONE4: TStringField
+      FieldName = 'SMSFONE4'
+      ReadOnly = True
+      FixedChar = True
+      Size = 1
+    end
+    object cdsClientDOCESTRANGEIRO: TStringField
+      FieldName = 'DOCESTRANGEIRO'
+      ReadOnly = True
+    end
+    object cdsClientCONTRIBUINTE: TIntegerField
+      FieldName = 'CONTRIBUINTE'
+      ReadOnly = True
+    end
+    object cdsClientQTDDIAAVISAR: TIntegerField
+      FieldName = 'QTDDIAAVISAR'
+      ReadOnly = True
+    end
+    object cdsClientNASCDIAMESAVISAR: TIntegerField
+      FieldName = 'NASCDIAMESAVISAR'
+      ReadOnly = True
+    end
+    object cdsClientEMAIL2: TStringField
+      FieldName = 'EMAIL2'
+      ReadOnly = True
+      Size = 60
+    end
+    object cdsClientEMAIL3: TStringField
+      FieldName = 'EMAIL3'
+      ReadOnly = True
+      Size = 60
+    end
+    object cdsClientEMAIL4: TStringField
+      FieldName = 'EMAIL4'
+      ReadOnly = True
+      Size = 60
+    end
+    object cdsClientEMAIL5: TStringField
+      FieldName = 'EMAIL5'
+      ReadOnly = True
+      Size = 60
+    end
+    object cdsClientUF: TStringField
+      FieldName = 'UF'
+      ReadOnly = True
+      FixedChar = True
+      Size = 2
+    end
+    object cdsClientDESCRICAO: TStringField
+      FieldName = 'DESCRICAO'
+      ReadOnly = True
+      Size = 40
+    end
+  end
+  object dspClient: TDataSetProvider
+    DataSet = qryClient
+    Left = 253
+    Top = 98
+  end
+  object qryClient: TFDQuery
+    Connection = FDConnection
+    SQL.Strings = (
+      'select C.*, P.*, CI.UF, CI.DESCRICAO from'
+      'CLIENTE C left join PESSOA P on (P.CNPJCPF = C.CNPJCPF)'
+      'left join CIDADE CI on (CI.CODCIDADE = P.CODCIDADE)'
+      '')
+    Left = 253
+    Top = 34
+    object qryClientCODCLIENTE: TIntegerField
+      FieldName = 'CODCLIENTE'
+      Origin = 'CODCLIENTE'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      Required = True
+    end
+    object qryClientCNPJCPF: TStringField
+      FieldName = 'CNPJCPF'
+      Origin = 'CNPJCPF'
+      Size = 14
+    end
+    object qryClientNCOMPRADOR: TStringField
+      FieldName = 'NCOMPRADOR'
+      Origin = 'NCOMPRADOR'
+      Size = 30
+    end
+    object qryClientNFANTASIA: TStringField
+      FieldName = 'NFANTASIA'
+      Origin = 'NFANTASIA'
+      Size = 35
+    end
+    object qryClientCONTACONTABIL: TStringField
+      FieldName = 'CONTACONTABIL'
+      Origin = 'CONTACONTABIL'
+    end
+    object qryClientTIPO: TIntegerField
+      FieldName = 'TIPO'
+      Origin = 'TIPO'
+    end
+    object qryClientREGIAO: TStringField
+      FieldName = 'REGIAO'
+      Origin = 'REGIAO'
+      Size = 4
+    end
+    object qryClientLIMITE: TBCDField
+      FieldName = 'LIMITE'
+      Origin = 'LIMITE'
+      Precision = 18
+      Size = 2
+    end
+    object qryClientTABELA: TStringField
+      FieldName = 'TABELA'
+      Origin = 'TABELA'
+      FixedChar = True
+      Size = 1
+    end
+    object qryClientNUMBANCO: TIntegerField
+      FieldName = 'NUMBANCO'
+      Origin = 'NUMBANCO'
+    end
+    object qryClientNUMAGENCIA: TIntegerField
+      FieldName = 'NUMAGENCIA'
+      Origin = 'NUMAGENCIA'
+    end
+    object qryClientREGJUNTA: TStringField
+      FieldName = 'REGJUNTA'
+      Origin = 'REGJUNTA'
+      Size = 10
+    end
+    object qryClientNUMREGJUNTA: TStringField
+      FieldName = 'NUMREGJUNTA'
+      Origin = 'NUMREGJUNTA'
+      Size = 15
+    end
+    object qryClientDATAREGJUNTA: TDateField
+      FieldName = 'DATAREGJUNTA'
+      Origin = 'DATAREGJUNTA'
+    end
+    object qryClientCAPITALREG: TBCDField
+      FieldName = 'CAPITALREG'
+      Origin = 'CAPITALREG'
+      Precision = 18
+      Size = 2
+    end
+    object qryClientNSOCIO01: TStringField
+      FieldName = 'NSOCIO01'
+      Origin = 'NSOCIO01'
+      Size = 40
+    end
+    object qryClientCPFSOCIO01: TStringField
+      FieldName = 'CPFSOCIO01'
+      Origin = 'CPFSOCIO01'
+      Size = 14
+    end
+    object qryClientDATANASCSOCIO01: TDateField
+      FieldName = 'DATANASCSOCIO01'
+      Origin = 'DATANASCSOCIO01'
+    end
+    object qryClientNSOCIO02: TStringField
+      FieldName = 'NSOCIO02'
+      Origin = 'NSOCIO02'
+      Size = 40
+    end
+    object qryClientCPFSOCIO02: TStringField
+      FieldName = 'CPFSOCIO02'
+      Origin = 'CPFSOCIO02'
+      Size = 14
+    end
+    object qryClientDATANASCSOCIO02: TDateField
+      FieldName = 'DATANASCSOCIO02'
+      Origin = 'DATANASCSOCIO02'
+    end
+    object qryClientNSOCIO03: TStringField
+      FieldName = 'NSOCIO03'
+      Origin = 'NSOCIO03'
+      Size = 40
+    end
+    object qryClientCPFSOCIO03: TStringField
+      FieldName = 'CPFSOCIO03'
+      Origin = 'CPFSOCIO03'
+      Size = 14
+    end
+    object qryClientDATANASCSOCIO03: TDateField
+      FieldName = 'DATANASCSOCIO03'
+      Origin = 'DATANASCSOCIO03'
+    end
+    object qryClientINFSPC: TStringField
+      FieldName = 'INFSPC'
+      Origin = 'INFSPC'
+      Size = 60
+    end
+    object qryClientINFSCI: TStringField
+      FieldName = 'INFSCI'
+      Origin = 'INFSCI'
+      Size = 60
+    end
+    object qryClientINFSERASA: TStringField
+      FieldName = 'INFSERASA'
+      Origin = 'INFSERASA'
+      Size = 30
+    end
+    object qryClientINFEMPRESA01: TStringField
+      FieldName = 'INFEMPRESA01'
+      Origin = 'INFEMPRESA01'
+      Size = 30
+    end
+    object qryClientINFDDD01: TIntegerField
+      FieldName = 'INFDDD01'
+      Origin = 'INFDDD01'
+    end
+    object qryClientINFFONE01: TStringField
+      FieldName = 'INFFONE01'
+      Origin = 'INFFONE01'
+      Size = 15
+    end
+    object qryClientINFCONTATO01: TStringField
+      FieldName = 'INFCONTATO01'
+      Origin = 'INFCONTATO01'
+    end
+    object qryClientINFDATACONSULTA01: TDateField
+      FieldName = 'INFDATACONSULTA01'
+      Origin = 'INFDATACONSULTA01'
+    end
+    object qryClientINFCLIENTEDESDE01: TStringField
+      FieldName = 'INFCLIENTEDESDE01'
+      Origin = 'INFCLIENTEDESDE01'
+      Size = 10
+    end
+    object qryClientINFPGVENCTO01: TStringField
+      FieldName = 'INFPGVENCTO01'
+      Origin = 'INFPGVENCTO01'
+      FixedChar = True
+      Size = 1
+    end
+    object qryClientINFVLMAIORFATURA01: TBCDField
+      FieldName = 'INFVLMAIORFATURA01'
+      Origin = 'INFVLMAIORFATURA01'
+      Precision = 18
+      Size = 2
+    end
+    object qryClientINFDATAMAIORFATURA01: TDateField
+      FieldName = 'INFDATAMAIORFATURA01'
+      Origin = 'INFDATAMAIORFATURA01'
+    end
+    object qryClientINFVLULTCOMPRA01: TBCDField
+      FieldName = 'INFVLULTCOMPRA01'
+      Origin = 'INFVLULTCOMPRA01'
+      Precision = 18
+      Size = 2
+    end
+    object qryClientINFDATAULTCOMPRA01: TDateField
+      FieldName = 'INFDATAULTCOMPRA01'
+      Origin = 'INFDATAULTCOMPRA01'
+    end
+    object qryClientINFCONCEITO01: TStringField
+      FieldName = 'INFCONCEITO01'
+      Origin = 'INFCONCEITO01'
+      Size = 30
+    end
+    object qryClientINFEMPRESA02: TStringField
+      FieldName = 'INFEMPRESA02'
+      Origin = 'INFEMPRESA02'
+      Size = 30
+    end
+    object qryClientINFDDD02: TIntegerField
+      FieldName = 'INFDDD02'
+      Origin = 'INFDDD02'
+    end
+    object qryClientINFFONE02: TStringField
+      FieldName = 'INFFONE02'
+      Origin = 'INFFONE02'
+      Size = 15
+    end
+    object qryClientINFCONTATO02: TStringField
+      FieldName = 'INFCONTATO02'
+      Origin = 'INFCONTATO02'
+    end
+    object qryClientINFDATACONSULTA02: TDateField
+      FieldName = 'INFDATACONSULTA02'
+      Origin = 'INFDATACONSULTA02'
+    end
+    object qryClientINFCLIENTEDESDE02: TStringField
+      FieldName = 'INFCLIENTEDESDE02'
+      Origin = 'INFCLIENTEDESDE02'
+      Size = 10
+    end
+    object qryClientINFPGVENCTO02: TStringField
+      FieldName = 'INFPGVENCTO02'
+      Origin = 'INFPGVENCTO02'
+      FixedChar = True
+      Size = 1
+    end
+    object qryClientINFVLMAIORFATURA02: TBCDField
+      FieldName = 'INFVLMAIORFATURA02'
+      Origin = 'INFVLMAIORFATURA02'
+      Precision = 18
+      Size = 2
+    end
+    object qryClientINFDATAMAIORFATURA02: TDateField
+      FieldName = 'INFDATAMAIORFATURA02'
+      Origin = 'INFDATAMAIORFATURA02'
+    end
+    object qryClientINFVLULTCOMPRA02: TBCDField
+      FieldName = 'INFVLULTCOMPRA02'
+      Origin = 'INFVLULTCOMPRA02'
+      Precision = 18
+      Size = 2
+    end
+    object qryClientINFDATAULTCOMPRA02: TDateField
+      FieldName = 'INFDATAULTCOMPRA02'
+      Origin = 'INFDATAULTCOMPRA02'
+    end
+    object qryClientINFCONCEITO02: TStringField
+      FieldName = 'INFCONCEITO02'
+      Origin = 'INFCONCEITO02'
+      Size = 30
+    end
+    object qryClientINFEMPRESA03: TStringField
+      FieldName = 'INFEMPRESA03'
+      Origin = 'INFEMPRESA03'
+      Size = 30
+    end
+    object qryClientINFDDD03: TIntegerField
+      FieldName = 'INFDDD03'
+      Origin = 'INFDDD03'
+    end
+    object qryClientINFFONE03: TStringField
+      FieldName = 'INFFONE03'
+      Origin = 'INFFONE03'
+      Size = 15
+    end
+    object qryClientINFCONTATO03: TStringField
+      FieldName = 'INFCONTATO03'
+      Origin = 'INFCONTATO03'
+    end
+    object qryClientINFDATACONSULTA03: TDateField
+      FieldName = 'INFDATACONSULTA03'
+      Origin = 'INFDATACONSULTA03'
+    end
+    object qryClientINFCLIENTEDESDE03: TStringField
+      FieldName = 'INFCLIENTEDESDE03'
+      Origin = 'INFCLIENTEDESDE03'
+      Size = 10
+    end
+    object qryClientINFPGVENCTO03: TStringField
+      FieldName = 'INFPGVENCTO03'
+      Origin = 'INFPGVENCTO03'
+      FixedChar = True
+      Size = 1
+    end
+    object qryClientINFVLMAIORFATURA03: TBCDField
+      FieldName = 'INFVLMAIORFATURA03'
+      Origin = 'INFVLMAIORFATURA03'
+      Precision = 18
+      Size = 2
+    end
+    object qryClientINFDATAMAIORFATURA03: TDateField
+      FieldName = 'INFDATAMAIORFATURA03'
+      Origin = 'INFDATAMAIORFATURA03'
+    end
+    object qryClientINFVLULTCOMPRA03: TBCDField
+      FieldName = 'INFVLULTCOMPRA03'
+      Origin = 'INFVLULTCOMPRA03'
+      Precision = 18
+      Size = 2
+    end
+    object qryClientINFDATAULTCOMPRA03: TDateField
+      FieldName = 'INFDATAULTCOMPRA03'
+      Origin = 'INFDATAULTCOMPRA03'
+    end
+    object qryClientINFCONCEITO03: TStringField
+      FieldName = 'INFCONCEITO03'
+      Origin = 'INFCONCEITO03'
+      Size = 30
+    end
+    object qryClientDATAULTMOV: TDateField
+      FieldName = 'DATAULTMOV'
+      Origin = 'DATAULTMOV'
+    end
+    object qryClientSITUACAO: TIntegerField
+      FieldName = 'SITUACAO'
+      Origin = 'SITUACAO'
+    end
+    object qryClientREG: TIntegerField
+      FieldName = 'REG'
+      Origin = 'REG'
+    end
+    object qryClientCODVENDEDOR: TIntegerField
+      FieldName = 'CODVENDEDOR'
+      Origin = 'CODVENDEDOR'
+    end
+    object qryClientCODCONDPG: TIntegerField
+      FieldName = 'CODCONDPG'
+      Origin = 'CODCONDPG'
+    end
+    object qryClientUSUARIO: TStringField
+      FieldName = 'USUARIO'
+      Origin = 'USUARIO'
+      Size = 15
+    end
+    object qryClientDATACADASTRO: TStringField
+      FieldName = 'DATACADASTRO'
+      Origin = 'DATACADASTRO'
+      Size = 10
+    end
+    object qryClientOBS: TStringField
+      FieldName = 'OBS'
+      Origin = 'OBS'
+      Size = 1000
+    end
+    object qryClientCODACESSOR: TIntegerField
+      FieldName = 'CODACESSOR'
+      Origin = 'CODACESSOR'
+    end
+    object qryClientTPCORRESPONDENCIA: TIntegerField
+      FieldName = 'TPCORRESPONDENCIA'
+      Origin = 'TPCORRESPONDENCIA'
+    end
+    object qryClientINSCESTAD: TStringField
+      FieldName = 'INSCESTAD'
+      Origin = 'INSCESTAD'
+    end
+    object qryClientCONTA: TStringField
+      FieldName = 'CONTA'
+      Origin = 'CONTA'
+    end
+    object qryClientINFEMPRESA04: TStringField
+      FieldName = 'INFEMPRESA04'
+      Origin = 'INFEMPRESA04'
+      Size = 30
+    end
+    object qryClientINFDDD04: TIntegerField
+      FieldName = 'INFDDD04'
+      Origin = 'INFDDD04'
+    end
+    object qryClientINFFONE04: TStringField
+      FieldName = 'INFFONE04'
+      Origin = 'INFFONE04'
+      Size = 15
+    end
+    object qryClientINFCONTATO04: TStringField
+      FieldName = 'INFCONTATO04'
+      Origin = 'INFCONTATO04'
+    end
+    object qryClientINFDATACONSULTA04: TDateField
+      FieldName = 'INFDATACONSULTA04'
+      Origin = 'INFDATACONSULTA04'
+    end
+    object qryClientINFCLIENTEDESDE04: TStringField
+      FieldName = 'INFCLIENTEDESDE04'
+      Origin = 'INFCLIENTEDESDE04'
+      Size = 10
+    end
+    object qryClientINFPGVENCTO04: TStringField
+      FieldName = 'INFPGVENCTO04'
+      Origin = 'INFPGVENCTO04'
+      FixedChar = True
+      Size = 1
+    end
+    object qryClientINFVLMAIORFATURA04: TBCDField
+      FieldName = 'INFVLMAIORFATURA04'
+      Origin = 'INFVLMAIORFATURA04'
+      Precision = 18
+      Size = 2
+    end
+    object qryClientINFDATAMAIORFATURA04: TDateField
+      FieldName = 'INFDATAMAIORFATURA04'
+      Origin = 'INFDATAMAIORFATURA04'
+    end
+    object qryClientINFVLULTCOMPRA04: TBCDField
+      FieldName = 'INFVLULTCOMPRA04'
+      Origin = 'INFVLULTCOMPRA04'
+      Precision = 18
+      Size = 2
+    end
+    object qryClientINFDATAULTCOMPRA04: TDateField
+      FieldName = 'INFDATAULTCOMPRA04'
+      Origin = 'INFDATAULTCOMPRA04'
+    end
+    object qryClientINFCONCEITO04: TStringField
+      FieldName = 'INFCONCEITO04'
+      Origin = 'INFCONCEITO04'
+      Size = 30
+    end
+    object qryClientINFEMPRESA05: TStringField
+      FieldName = 'INFEMPRESA05'
+      Origin = 'INFEMPRESA05'
+      Size = 30
+    end
+    object qryClientINFDDD05: TIntegerField
+      FieldName = 'INFDDD05'
+      Origin = 'INFDDD05'
+    end
+    object qryClientINFFONE05: TStringField
+      FieldName = 'INFFONE05'
+      Origin = 'INFFONE05'
+      Size = 15
+    end
+    object qryClientINFCONTATO05: TStringField
+      FieldName = 'INFCONTATO05'
+      Origin = 'INFCONTATO05'
+    end
+    object qryClientINFDATACONSULTA05: TDateField
+      FieldName = 'INFDATACONSULTA05'
+      Origin = 'INFDATACONSULTA05'
+    end
+    object qryClientINFCLIENTEDESDE05: TStringField
+      FieldName = 'INFCLIENTEDESDE05'
+      Origin = 'INFCLIENTEDESDE05'
+      Size = 10
+    end
+    object qryClientINFPGVENCTO05: TStringField
+      FieldName = 'INFPGVENCTO05'
+      Origin = 'INFPGVENCTO05'
+      FixedChar = True
+      Size = 1
+    end
+    object qryClientINFVLMAIORFATURA05: TBCDField
+      FieldName = 'INFVLMAIORFATURA05'
+      Origin = 'INFVLMAIORFATURA05'
+      Precision = 18
+      Size = 2
+    end
+    object qryClientINFDATAMAIORFATURA05: TDateField
+      FieldName = 'INFDATAMAIORFATURA05'
+      Origin = 'INFDATAMAIORFATURA05'
+    end
+    object qryClientINFVLULTCOMPRA05: TBCDField
+      FieldName = 'INFVLULTCOMPRA05'
+      Origin = 'INFVLULTCOMPRA05'
+      Precision = 18
+      Size = 2
+    end
+    object qryClientINFDATAULTCOMPRA05: TDateField
+      FieldName = 'INFDATAULTCOMPRA05'
+      Origin = 'INFDATAULTCOMPRA05'
+    end
+    object qryClientINFCONCEITO05: TStringField
+      FieldName = 'INFCONCEITO05'
+      Origin = 'INFCONCEITO05'
+      Size = 30
+    end
+    object qryClientCLIENTEDESDE: TDateField
+      FieldName = 'CLIENTEDESDE'
+      Origin = 'CLIENTEDESDE'
+    end
+    object qryClientSUBSTTRIBUTARIO: TStringField
+      FieldName = 'SUBSTTRIBUTARIO'
+      Origin = 'SUBSTTRIBUTARIO'
+      FixedChar = True
+      Size = 1
+    end
+    object qryClientCODORIGEM: TIntegerField
+      FieldName = 'CODORIGEM'
+      Origin = 'CODORIGEM'
+    end
+    object qryClientSIMPLES: TStringField
+      FieldName = 'SIMPLES'
+      Origin = 'SIMPLES'
+      FixedChar = True
+      Size = 1
+    end
+    object qryClientDISPLAY: TStringField
+      FieldName = 'DISPLAY'
+      Origin = '"DISPLAY"'
+      FixedChar = True
+      Size = 1
+    end
+    object qryClientBANCA: TStringField
+      FieldName = 'BANCA'
+      Origin = 'BANCA'
+      FixedChar = True
+      Size = 1
+    end
+    object qryClientFATURAMENTO: TStringField
+      FieldName = 'FATURAMENTO'
+      Origin = 'FATURAMENTO'
+      FixedChar = True
+      Size = 1
+    end
+    object qryClientCODCONDICAO: TIntegerField
+      FieldName = 'CODCONDICAO'
+      Origin = 'CODCONDICAO'
+    end
+    object qryClientCODCFOP: TIntegerField
+      FieldName = 'CODCFOP'
+      Origin = 'CODCFOP'
+    end
+    object qryClientHOMOLOGADOCECOP: TStringField
+      FieldName = 'HOMOLOGADOCECOP'
+      Origin = 'HOMOLOGADOCECOP'
+      FixedChar = True
+      Size = 1
+    end
+    object qryClientCODPESSOA: TIntegerField
+      AutoGenerateValue = arDefault
+      FieldName = 'CODPESSOA'
+      Origin = 'CODPESSOA'
+      ProviderFlags = []
+      ReadOnly = True
+    end
+    object qryClientCNPJCPF_1: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'CNPJCPF_1'
+      Origin = 'CNPJCPF'
+      ProviderFlags = []
+      ReadOnly = True
+      Size = 14
+    end
+    object qryClientNOME: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'NOME'
+      Origin = 'NOME'
+      ProviderFlags = []
+      ReadOnly = True
+      Size = 50
+    end
+    object qryClientTIPOPESSOA: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'TIPOPESSOA'
+      Origin = 'TIPOPESSOA'
+      ProviderFlags = []
+      ReadOnly = True
+      FixedChar = True
+      Size = 1
+    end
+    object qryClientCONTATO: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'CONTATO'
+      Origin = 'CONTATO'
+      ProviderFlags = []
+      ReadOnly = True
+      Size = 40
+    end
+    object qryClientDDD1: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'DDD1'
+      Origin = 'DDD1'
+      ProviderFlags = []
+      ReadOnly = True
+      Size = 5
+    end
+    object qryClientFONE1: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'FONE1'
+      Origin = 'FONE1'
+      ProviderFlags = []
+      ReadOnly = True
+      Size = 9
+    end
+    object qryClientDDD2: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'DDD2'
+      Origin = 'DDD2'
+      ProviderFlags = []
+      ReadOnly = True
+      Size = 5
+    end
+    object qryClientFONE2: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'FONE2'
+      Origin = 'FONE2'
+      ProviderFlags = []
+      ReadOnly = True
+      Size = 9
+    end
+    object qryClientDDD3: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'DDD3'
+      Origin = 'DDD3'
+      ProviderFlags = []
+      ReadOnly = True
+      Size = 5
+    end
+    object qryClientFONE3: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'FONE3'
+      Origin = 'FONE3'
+      ProviderFlags = []
+      ReadOnly = True
+      Size = 9
+    end
+    object qryClientDATANASCIMENTO: TDateField
+      AutoGenerateValue = arDefault
+      FieldName = 'DATANASCIMENTO'
+      Origin = 'DATANASCIMENTO'
+      ProviderFlags = []
+      ReadOnly = True
+    end
+    object qryClientNASCDIAMES: TIntegerField
+      AutoGenerateValue = arDefault
+      FieldName = 'NASCDIAMES'
+      Origin = 'NASCDIAMES'
+      ProviderFlags = []
+      ReadOnly = True
+    end
+    object qryClientSEXO: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'SEXO'
+      Origin = 'SEXO'
+      ProviderFlags = []
+      ReadOnly = True
+      FixedChar = True
+      Size = 1
+    end
+    object qryClientESTCIVIL: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'ESTCIVIL'
+      Origin = 'ESTCIVIL'
+      ProviderFlags = []
+      ReadOnly = True
+      FixedChar = True
+      Size = 1
+    end
+    object qryClientNACIONALIDADE: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'NACIONALIDADE'
+      Origin = 'NACIONALIDADE'
+      ProviderFlags = []
+      ReadOnly = True
+    end
+    object qryClientRG: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'RG'
+      Origin = 'RG'
+      ProviderFlags = []
+      ReadOnly = True
+      Size = 15
+    end
+    object qryClientORGAOEMISSORRG: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'ORGAOEMISSORRG'
+      Origin = 'ORGAOEMISSORRG'
+      ProviderFlags = []
+      ReadOnly = True
+      Size = 15
+    end
+    object qryClientDATAEMISSAORG: TDateField
+      AutoGenerateValue = arDefault
+      FieldName = 'DATAEMISSAORG'
+      Origin = 'DATAEMISSAORG'
+      ProviderFlags = []
+      ReadOnly = True
+    end
+    object qryClientINSCESTADUAL: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'INSCESTADUAL'
+      Origin = 'INSCESTADUAL'
+      ProviderFlags = []
+      ReadOnly = True
+      Size = 25
+    end
+    object qryClientEMAIL: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'EMAIL'
+      Origin = 'EMAIL'
+      ProviderFlags = []
+      ReadOnly = True
+      Size = 60
+    end
+    object qryClientTRATAMENTO: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'TRATAMENTO'
+      Origin = 'TRATAMENTO'
+      ProviderFlags = []
+      ReadOnly = True
+      Size = 22
+    end
+    object qryClientDATAULTIMOMOV: TDateField
+      AutoGenerateValue = arDefault
+      FieldName = 'DATAULTIMOMOV'
+      Origin = 'DATAULTIMOMOV'
+      ProviderFlags = []
+      ReadOnly = True
+    end
+    object qryClientDATACADASTRO_1: TDateField
+      AutoGenerateValue = arDefault
+      FieldName = 'DATACADASTRO_1'
+      Origin = 'DATACADASTRO'
+      ProviderFlags = []
+      ReadOnly = True
+    end
+    object qryClientATUACAO2: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'ATUACAO2'
+      Origin = 'ATUACAO2'
+      ProviderFlags = []
+      ReadOnly = True
+      Size = 4
+    end
+    object qryClientATUACAO3: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'ATUACAO3'
+      Origin = 'ATUACAO3'
+      ProviderFlags = []
+      ReadOnly = True
+      Size = 4
+    end
+    object qryClientATUACAO4: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'ATUACAO4'
+      Origin = 'ATUACAO4'
+      ProviderFlags = []
+      ReadOnly = True
+      Size = 4
+    end
+    object qryClientATUACAO5: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'ATUACAO5'
+      Origin = 'ATUACAO5'
+      ProviderFlags = []
+      ReadOnly = True
+      Size = 4
+    end
+    object qryClientENDMDIRETA: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'ENDMDIRETA'
+      Origin = 'ENDMDIRETA'
+      ProviderFlags = []
+      ReadOnly = True
+      FixedChar = True
+      Size = 1
+    end
+    object qryClientREG_1: TIntegerField
+      AutoGenerateValue = arDefault
+      FieldName = 'REG_1'
+      Origin = 'REG'
+      ProviderFlags = []
+      ReadOnly = True
+    end
+    object qryClientCODPROFISSAO: TIntegerField
+      AutoGenerateValue = arDefault
+      FieldName = 'CODPROFISSAO'
+      Origin = 'CODPROFISSAO'
+      ProviderFlags = []
+      ReadOnly = True
+    end
+    object qryClientUSUARIO_1: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'USUARIO_1'
+      Origin = 'USUARIO'
+      ProviderFlags = []
+      ReadOnly = True
+      Size = 15
+    end
+    object qryClientCODATUACAO: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'CODATUACAO'
+      Origin = 'CODATUACAO'
+      ProviderFlags = []
+      ReadOnly = True
+      Size = 4
+    end
+    object qryClientLOGRADOURO: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'LOGRADOURO'
+      Origin = 'LOGRADOURO'
+      ProviderFlags = []
+      ReadOnly = True
+      Size = 50
+    end
+    object qryClientNUMERO: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'NUMERO'
+      Origin = 'NUMERO'
+      ProviderFlags = []
+      ReadOnly = True
+      Size = 8
+    end
+    object qryClientCOMPLEMENTO: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'COMPLEMENTO'
+      Origin = 'COMPLEMENTO'
+      ProviderFlags = []
+      ReadOnly = True
+      Size = 30
+    end
+    object qryClientBAIRRO: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'BAIRRO'
+      Origin = 'BAIRRO'
+      ProviderFlags = []
+      ReadOnly = True
+      Size = 30
+    end
+    object qryClientCEP: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'CEP'
+      Origin = 'CEP'
+      ProviderFlags = []
+      ReadOnly = True
+      Size = 8
+    end
+    object qryClientCODCIDADE: TIntegerField
+      AutoGenerateValue = arDefault
+      FieldName = 'CODCIDADE'
+      Origin = 'CODCIDADE'
+      ProviderFlags = []
+      ReadOnly = True
+    end
+    object qryClientLOGRADOURO1: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'LOGRADOURO1'
+      Origin = 'LOGRADOURO1'
+      ProviderFlags = []
+      ReadOnly = True
+      Size = 50
+    end
+    object qryClientNUMERO1: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'NUMERO1'
+      Origin = 'NUMERO1'
+      ProviderFlags = []
+      ReadOnly = True
+      Size = 8
+    end
+    object qryClientCOMPLEMENTO1: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'COMPLEMENTO1'
+      Origin = 'COMPLEMENTO1'
+      ProviderFlags = []
+      ReadOnly = True
+      Size = 30
+    end
+    object qryClientBAIRRO1: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'BAIRRO1'
+      Origin = 'BAIRRO1'
+      ProviderFlags = []
+      ReadOnly = True
+      Size = 30
+    end
+    object qryClientCEP1: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'CEP1'
+      Origin = 'CEP1'
+      ProviderFlags = []
+      ReadOnly = True
+      Size = 8
+    end
+    object qryClientCODCIDADE1: TIntegerField
+      AutoGenerateValue = arDefault
+      FieldName = 'CODCIDADE1'
+      Origin = 'CODCIDADE1'
+      ProviderFlags = []
+      ReadOnly = True
+    end
+    object qryClientLOGRADOURO2: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'LOGRADOURO2'
+      Origin = 'LOGRADOURO2'
+      ProviderFlags = []
+      ReadOnly = True
+      Size = 50
+    end
+    object qryClientNUMERO2: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'NUMERO2'
+      Origin = 'NUMERO2'
+      ProviderFlags = []
+      ReadOnly = True
+      Size = 8
+    end
+    object qryClientCOMPLEMENTO2: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'COMPLEMENTO2'
+      Origin = 'COMPLEMENTO2'
+      ProviderFlags = []
+      ReadOnly = True
+      Size = 30
+    end
+    object qryClientBAIRRO2: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'BAIRRO2'
+      Origin = 'BAIRRO2'
+      ProviderFlags = []
+      ReadOnly = True
+      Size = 30
+    end
+    object qryClientCEP2: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'CEP2'
+      Origin = 'CEP2'
+      ProviderFlags = []
+      ReadOnly = True
+      Size = 8
+    end
+    object qryClientCODCIDADE2: TIntegerField
+      AutoGenerateValue = arDefault
+      FieldName = 'CODCIDADE2'
+      Origin = 'CODCIDADE2'
+      ProviderFlags = []
+      ReadOnly = True
+    end
+    object qryClientHOMEPAGE: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'HOMEPAGE'
+      Origin = 'HOMEPAGE'
+      ProviderFlags = []
+      ReadOnly = True
+      Size = 60
+    end
+    object qryClientIESUFRAMA: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'IESUFRAMA'
+      Origin = 'IESUFRAMA'
+      ProviderFlags = []
+      ReadOnly = True
+      Size = 9
+    end
+    object qryClientSMSFONE1: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'SMSFONE1'
+      Origin = 'SMSFONE1'
+      ProviderFlags = []
+      ReadOnly = True
+      FixedChar = True
+      Size = 1
+    end
+    object qryClientSMSFONE2: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'SMSFONE2'
+      Origin = 'SMSFONE2'
+      ProviderFlags = []
+      ReadOnly = True
+      FixedChar = True
+      Size = 1
+    end
+    object qryClientSMSFONE3: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'SMSFONE3'
+      Origin = 'SMSFONE3'
+      ProviderFlags = []
+      ReadOnly = True
+      FixedChar = True
+      Size = 1
+    end
+    object qryClientSMSFONE4: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'SMSFONE4'
+      Origin = 'SMSFONE4'
+      ProviderFlags = []
+      ReadOnly = True
+      FixedChar = True
+      Size = 1
+    end
+    object qryClientDOCESTRANGEIRO: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'DOCESTRANGEIRO'
+      Origin = 'DOCESTRANGEIRO'
+      ProviderFlags = []
+      ReadOnly = True
+    end
+    object qryClientCONTRIBUINTE: TIntegerField
+      AutoGenerateValue = arDefault
+      FieldName = 'CONTRIBUINTE'
+      Origin = 'CONTRIBUINTE'
+      ProviderFlags = []
+      ReadOnly = True
+    end
+    object qryClientQTDDIAAVISAR: TIntegerField
+      AutoGenerateValue = arDefault
+      FieldName = 'QTDDIAAVISAR'
+      Origin = 'QTDDIAAVISAR'
+      ProviderFlags = []
+      ReadOnly = True
+    end
+    object qryClientNASCDIAMESAVISAR: TIntegerField
+      AutoGenerateValue = arDefault
+      FieldName = 'NASCDIAMESAVISAR'
+      Origin = 'NASCDIAMESAVISAR'
+      ProviderFlags = []
+      ReadOnly = True
+    end
+    object qryClientEMAIL2: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'EMAIL2'
+      Origin = 'EMAIL2'
+      ProviderFlags = []
+      ReadOnly = True
+      Size = 60
+    end
+    object qryClientEMAIL3: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'EMAIL3'
+      Origin = 'EMAIL3'
+      ProviderFlags = []
+      ReadOnly = True
+      Size = 60
+    end
+    object qryClientEMAIL4: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'EMAIL4'
+      Origin = 'EMAIL4'
+      ProviderFlags = []
+      ReadOnly = True
+      Size = 60
+    end
+    object qryClientEMAIL5: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'EMAIL5'
+      Origin = 'EMAIL5'
+      ProviderFlags = []
+      ReadOnly = True
+      Size = 60
+    end
+    object qryClientUF: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'UF'
+      Origin = 'UF'
+      ProviderFlags = []
+      ReadOnly = True
+      FixedChar = True
+      Size = 2
+    end
+    object qryClientDESCRICAO: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'DESCRICAO'
+      Origin = 'DESCRICAO'
+      ProviderFlags = []
+      ReadOnly = True
+      Size = 40
+    end
+  end
+  object qryProduct: TFDQuery
+    Connection = FDConnection
+    SQL.Strings = (
+      
+        'select P.*, G.DESCRICAO as NGRUPO, S.DESCRICAO as NSUBGRUPO, S.T' +
+        'IPO as SUBTIPO, S.PONTAESTOQUE as SUBPONTAESTOQUE,'
+      'G.RESUMO as GRUPORESUMO, G.ORDEM as GRUPOORDEM from'
+      'PRODUTO P'
+      'inner join GRUPO G on (G.CODGRUPO = P.CODGRUPO)'
+      'inner join SUBGRUPO S on (S.CODSUBGRUPO = P.CODSUBGRUPO)'
+      
+        'where (P.SITUACAO = 1) and (S.ativosite = '#39'S'#39' or G.ativosite = '#39 +
+        'S'#39')'
+      ''
+      '')
+    Left = 175
+    Top = 34
+    object qryProductREFERENCIA: TStringField
+      FieldName = 'REFERENCIA'
+      Origin = 'REFERENCIA'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      Required = True
+      Size = 13
+    end
+    object qryProductTIPO: TIntegerField
+      FieldName = 'TIPO'
+      Origin = 'TIPO'
+    end
+    object qryProductDESCRICAO1: TStringField
+      FieldName = 'DESCRICAO1'
+      Origin = 'DESCRICAO1'
+      Size = 60
+    end
+    object qryProductDESCRICAO2: TStringField
+      FieldName = 'DESCRICAO2'
+      Origin = 'DESCRICAO2'
+      Size = 60
+    end
+    object qryProductDESCRICAO3: TStringField
+      FieldName = 'DESCRICAO3'
+      Origin = 'DESCRICAO3'
+      Size = 15
+    end
+    object qryProductCODGRUPO: TIntegerField
+      FieldName = 'CODGRUPO'
+      Origin = 'CODGRUPO'
+    end
+    object qryProductCODSUBGRUPO: TIntegerField
+      FieldName = 'CODSUBGRUPO'
+      Origin = 'CODSUBGRUPO'
+    end
+    object qryProductUNIDADEMEDIDA: TStringField
+      FieldName = 'UNIDADEMEDIDA'
+      Origin = 'UNIDADEMEDIDA'
+      Size = 3
+    end
+    object qryProductEMBALAGEM: TStringField
+      FieldName = 'EMBALAGEM'
+      Origin = 'EMBALAGEM'
+      Size = 10
+    end
+    object qryProductVAREJO: TStringField
+      FieldName = 'VAREJO'
+      Origin = 'VAREJO'
+      FixedChar = True
+      Size = 1
+    end
+    object qryProductVLR1: TFloatField
+      FieldName = 'VLR1'
+      Origin = 'VLR1'
+    end
+    object qryProductVLR2: TFloatField
+      FieldName = 'VLR2'
+      Origin = 'VLR2'
+    end
+    object qryProductVLR3: TFloatField
+      FieldName = 'VLR3'
+      Origin = 'VLR3'
+    end
+    object qryProductVLR4: TFloatField
+      FieldName = 'VLR4'
+      Origin = 'VLR4'
+    end
+    object qryProductVLR5: TFloatField
+      FieldName = 'VLR5'
+      Origin = 'VLR5'
+    end
+    object qryProductVLR6: TFloatField
+      FieldName = 'VLR6'
+      Origin = 'VLR6'
+    end
+    object qryProductQTDEMEDIAP: TFloatField
+      FieldName = 'QTDEMEDIAP'
+      Origin = 'QTDEMEDIAP'
+    end
+    object qryProductESTMINIMO: TFloatField
+      FieldName = 'ESTMINIMO'
+      Origin = 'ESTMINIMO'
+    end
+    object qryProductESTMAXIMO: TFloatField
+      FieldName = 'ESTMAXIMO'
+      Origin = 'ESTMAXIMO'
+    end
+    object qryProductPESOLIQUIDO: TFloatField
+      FieldName = 'PESOLIQUIDO'
+      Origin = 'PESOLIQUIDO'
+    end
+    object qryProductPESOBRUTO: TFloatField
+      FieldName = 'PESOBRUTO'
+      Origin = 'PESOBRUTO'
+    end
+    object qryProductABREVPESO: TStringField
+      FieldName = 'ABREVPESO'
+      Origin = 'ABREVPESO'
+      Size = 3
+    end
+    object qryProductCODCLASFISCAL: TStringField
+      FieldName = 'CODCLASFISCAL'
+      Origin = 'CODCLASFISCAL'
+      Size = 2
+    end
+    object qryProductCONTROLE: TStringField
+      FieldName = 'CONTROLE'
+      Origin = 'CONTROLE'
+      FixedChar = True
+      Size = 1
+    end
+    object qryProductPERCIPI: TFloatField
+      FieldName = 'PERCIPI'
+      Origin = 'PERCIPI'
+    end
+    object qryProductPERCICMS: TFloatField
+      FieldName = 'PERCICMS'
+      Origin = 'PERCICMS'
+    end
+    object qryProductPERCQUEBRA: TFloatField
+      FieldName = 'PERCQUEBRA'
+      Origin = 'PERCQUEBRA'
+    end
+    object qryProductCOMISVLRVISTA: TFloatField
+      FieldName = 'COMISVLRVISTA'
+      Origin = 'COMISVLRVISTA'
+    end
+    object qryProductCOMISVLRPRAZO: TFloatField
+      FieldName = 'COMISVLRPRAZO'
+      Origin = 'COMISVLRPRAZO'
+    end
+    object qryProductCODFORNECEDOR1: TIntegerField
+      FieldName = 'CODFORNECEDOR1'
+      Origin = 'CODFORNECEDOR1'
+    end
+    object qryProductCODFORNECEDOR2: TIntegerField
+      FieldName = 'CODFORNECEDOR2'
+      Origin = 'CODFORNECEDOR2'
+    end
+    object qryProductCODFORNECEDOR3: TIntegerField
+      FieldName = 'CODFORNECEDOR3'
+      Origin = 'CODFORNECEDOR3'
+    end
+    object qryProductCODFORNECEDOR4: TIntegerField
+      FieldName = 'CODFORNECEDOR4'
+      Origin = 'CODFORNECEDOR4'
+    end
+    object qryProductCODFORNECEDOR5: TIntegerField
+      FieldName = 'CODFORNECEDOR5'
+      Origin = 'CODFORNECEDOR5'
+    end
+    object qryProductSITUACAO: TIntegerField
+      FieldName = 'SITUACAO'
+      Origin = 'SITUACAO'
+    end
+    object qryProductTAM1: TStringField
+      FieldName = 'TAM1'
+      Origin = 'TAM1'
+      Size = 2
+    end
+    object qryProductTAM2: TStringField
+      FieldName = 'TAM2'
+      Origin = 'TAM2'
+      Size = 2
+    end
+    object qryProductTAM3: TStringField
+      FieldName = 'TAM3'
+      Origin = 'TAM3'
+      Size = 2
+    end
+    object qryProductTAM4: TStringField
+      FieldName = 'TAM4'
+      Origin = 'TAM4'
+      Size = 2
+    end
+    object qryProductTAM5: TStringField
+      FieldName = 'TAM5'
+      Origin = 'TAM5'
+      Size = 2
+    end
+    object qryProductTAM6: TStringField
+      FieldName = 'TAM6'
+      Origin = 'TAM6'
+      Size = 2
+    end
+    object qryProductTAM7: TStringField
+      FieldName = 'TAM7'
+      Origin = 'TAM7'
+      Size = 2
+    end
+    object qryProductTAM8: TStringField
+      FieldName = 'TAM8'
+      Origin = 'TAM8'
+      Size = 2
+    end
+    object qryProductTAM9: TStringField
+      FieldName = 'TAM9'
+      Origin = 'TAM9'
+      Size = 2
+    end
+    object qryProductREG: TIntegerField
+      FieldName = 'REG'
+      Origin = 'REG'
+    end
+    object qryProductUSUARIO: TStringField
+      FieldName = 'USUARIO'
+      Origin = 'USUARIO'
+      Size = 15
+    end
+    object qryProductVLR7: TFloatField
+      FieldName = 'VLR7'
+      Origin = 'VLR7'
+    end
+    object qryProductVLR8: TFloatField
+      FieldName = 'VLR8'
+      Origin = 'VLR8'
+    end
+    object qryProductCODPROCEDENCIA: TStringField
+      FieldName = 'CODPROCEDENCIA'
+      Origin = 'CODPROCEDENCIA'
+      FixedChar = True
+      Size = 1
+    end
+    object qryProductDESCRICAO4: TStringField
+      FieldName = 'DESCRICAO4'
+      Origin = 'DESCRICAO4'
+      Size = 15
+    end
+    object qryProductTAM10: TStringField
+      FieldName = 'TAM10'
+      Origin = 'TAM10'
+      Size = 2
+    end
+    object qryProductTAM11: TStringField
+      FieldName = 'TAM11'
+      Origin = 'TAM11'
+      Size = 2
+    end
+    object qryProductTAM12: TStringField
+      FieldName = 'TAM12'
+      Origin = 'TAM12'
+      Size = 12
+    end
+    object qryProductTAM13: TStringField
+      FieldName = 'TAM13'
+      Origin = 'TAM13'
+      Size = 14
+    end
+    object qryProductTAM14: TStringField
+      FieldName = 'TAM14'
+      Origin = 'TAM14'
+      Size = 1
+    end
+    object qryProductTAM15: TStringField
+      FieldName = 'TAM15'
+      Origin = 'TAM15'
+      Size = 2
+    end
+    object qryProductCODICMS: TStringField
+      FieldName = 'CODICMS'
+      Origin = 'CODICMS'
+      FixedChar = True
+      Size = 1
+    end
+    object qryProductCODIPI: TStringField
+      FieldName = 'CODIPI'
+      Origin = 'CODIPI'
+      FixedChar = True
+      Size = 1
+    end
+    object qryProductMOEDA: TStringField
+      FieldName = 'MOEDA'
+      Origin = 'MOEDA'
+      Size = 6
+    end
+    object qryProductCONTACONTABIL: TStringField
+      FieldName = 'CONTACONTABIL'
+      Origin = 'CONTACONTABIL'
+      Size = 15
+    end
+    object qryProductREFERENCIA2: TStringField
+      FieldName = 'REFERENCIA2'
+      Origin = 'REFERENCIA2'
+      Size = 13
+    end
+    object qryProductCODCOLECAO: TIntegerField
+      FieldName = 'CODCOLECAO'
+      Origin = 'CODCOLECAO'
+    end
+    object qryProductDATAULTMOV: TDateField
+      FieldName = 'DATAULTMOV'
+      Origin = 'DATAULTMOV'
+    end
+    object qryProductCAMINHO: TStringField
+      FieldName = 'CAMINHO'
+      Origin = 'CAMINHO'
+      Size = 300
+    end
+    object qryProductTAMANHO: TStringField
+      FieldName = 'TAMANHO'
+      Origin = 'TAMANHO'
+      Size = 3
+    end
+    object qryProductTAMANHO1: TStringField
+      FieldName = 'TAMANHO1'
+      Origin = 'TAMANHO1'
+      Size = 3
+    end
+    object qryProductVLR9: TFloatField
+      FieldName = 'VLR9'
+      Origin = 'VLR9'
+    end
+    object qryProductVLR10: TFloatField
+      FieldName = 'VLR10'
+      Origin = 'VLR10'
+    end
+    object qryProductVLR11: TFloatField
+      FieldName = 'VLR11'
+      Origin = 'VLR11'
+    end
+    object qryProductVLR12: TFloatField
+      FieldName = 'VLR12'
+      Origin = 'VLR12'
+    end
+    object qryProductCODMENSAGEM: TIntegerField
+      FieldName = 'CODMENSAGEM'
+      Origin = 'CODMENSAGEM'
+    end
+    object qryProductCODGRUPOTRIB: TIntegerField
+      FieldName = 'CODGRUPOTRIB'
+      Origin = 'CODGRUPOTRIB'
+    end
+    object qryProductIMAGEM: TBlobField
+      FieldName = 'IMAGEM'
+      Origin = 'IMAGEM'
+    end
+    object qryProductREFFORNECEDOR: TStringField
+      FieldName = 'REFFORNECEDOR'
+      Origin = 'REFFORNECEDOR'
+    end
+    object qryProductALIQUOTAECF: TSingleField
+      FieldName = 'ALIQUOTAECF'
+      Origin = 'ALIQUOTAECF'
+    end
+    object qryProductTRIBUTACAOECF: TIntegerField
+      FieldName = 'TRIBUTACAOECF'
+      Origin = 'TRIBUTACAOECF'
+    end
+    object qryProductPRECOCUSTO: TFloatField
+      FieldName = 'PRECOCUSTO'
+      Origin = 'PRECOCUSTO'
+    end
+    object qryProductLUCRO: TFloatField
+      FieldName = 'LUCRO'
+      Origin = 'LUCRO'
+    end
+    object qryProductVLREMBALAGEM: TFloatField
+      FieldName = 'VLREMBALAGEM'
+      Origin = 'VLREMBALAGEM'
+    end
+    object qryProductVLRSEGURO: TFloatField
+      FieldName = 'VLRSEGURO'
+      Origin = 'VLRSEGURO'
+    end
+    object qryProductFRETE: TFloatField
+      FieldName = 'FRETE'
+      Origin = 'FRETE'
+    end
+    object qryProductIP: TFloatField
+      FieldName = 'IP'
+      Origin = 'IP'
+    end
+    object qryProductICMS: TFloatField
+      FieldName = 'ICMS'
+      Origin = 'ICMS'
+    end
+    object qryProductSUBTOTAL: TFloatField
+      FieldName = 'SUBTOTAL'
+      Origin = 'SUBTOTAL'
+    end
+    object qryProductTOTAL: TFloatField
+      FieldName = 'TOTAL'
+      Origin = 'TOTAL'
+    end
+    object qryProductCOD_ICMS: TIntegerField
+      FieldName = 'COD_ICMS'
+      Origin = 'COD_ICMS'
+    end
+    object qryProductCODBARRAS: TStringField
+      FieldName = 'CODBARRAS'
+      Origin = 'CODBARRAS'
+      Size = 14
+    end
+    object qryProductOBS: TStringField
+      FieldName = 'OBS'
+      Origin = 'OBS'
+      Size = 3000
+    end
+    object qryProductCODMENSAGEM1: TIntegerField
+      FieldName = 'CODMENSAGEM1'
+      Origin = 'CODMENSAGEM1'
+    end
+    object qryProductCODGRUPOTRIB1: TIntegerField
+      FieldName = 'CODGRUPOTRIB1'
+      Origin = 'CODGRUPOTRIB1'
+    end
+    object qryProductDATACADASTRO: TDateField
+      FieldName = 'DATACADASTRO'
+      Origin = 'DATACADASTRO'
+    end
+    object qryProductDATAALTERACAO: TDateField
+      FieldName = 'DATAALTERACAO'
+      Origin = 'DATAALTERACAO'
+    end
+    object qryProductFINALIDADE: TIntegerField
+      FieldName = 'FINALIDADE'
+      Origin = 'FINALIDADE'
+    end
+    object qryProductCOD_LST: TStringField
+      FieldName = 'COD_LST'
+      Origin = 'COD_LST'
+      Size = 4
+    end
+    object qryProductIDENT_MERC: TIntegerField
+      FieldName = 'IDENT_MERC'
+      Origin = 'IDENT_MERC'
+    end
+    object qryProductCARACTERISTICAS: TStringField
+      FieldName = 'CARACTERISTICAS'
+      Origin = 'CARACTERISTICAS'
+      Size = 255
+    end
+    object qryProductCOD_PRNC: TStringField
+      FieldName = 'COD_PRNC'
+      Origin = 'COD_PRNC'
+      Size = 13
+    end
+    object qryProductCOD_CTA: TStringField
+      FieldName = 'COD_CTA'
+      Origin = 'COD_CTA'
+      Size = 60
+    end
+    object qryProductNR_PARC: TIntegerField
+      FieldName = 'NR_PARC'
+      Origin = 'NR_PARC'
+    end
+    object qryProductCOD_CCUS: TStringField
+      FieldName = 'COD_CCUS'
+      Origin = 'COD_CCUS'
+      Size = 60
+    end
+    object qryProductFUNC: TStringField
+      FieldName = 'FUNC'
+      Origin = 'FUNC'
+      Size = 255
+    end
+    object qryProductVIDAUTIL: TIntegerField
+      FieldName = 'VIDAUTIL'
+      Origin = 'VIDAUTIL'
+    end
+    object qryProductUNIDADEMEDIDA1: TStringField
+      FieldName = 'UNIDADEMEDIDA1'
+      Origin = 'UNIDADEMEDIDA1'
+      Size = 3
+    end
+    object qryProductFATOR: TFloatField
+      FieldName = 'FATOR'
+      Origin = 'FATOR'
+    end
+    object qryProductCODIGO: TIntegerField
+      FieldName = 'CODIGO'
+      Origin = 'CODIGO'
+    end
+    object qryProductESTOQUE: TIntegerField
+      FieldName = 'ESTOQUE'
+      Origin = 'ESTOQUE'
+    end
+    object qryProductPACIENTE: TStringField
+      FieldName = 'PACIENTE'
+      Origin = 'PACIENTE'
+      Size = 50
+    end
+    object qryProductCPF: TStringField
+      FieldName = 'CPF'
+      Origin = 'CPF'
+      Size = 11
+    end
+    object qryProductEMAIL: TStringField
+      FieldName = 'EMAIL'
+      Origin = 'EMAIL'
+      Size = 100
+    end
+    object qryProductTELEFONE1: TStringField
+      FieldName = 'TELEFONE1'
+      Origin = 'TELEFONE1'
+    end
+    object qryProductTELEFONE2: TStringField
+      FieldName = 'TELEFONE2'
+      Origin = 'TELEFONE2'
+    end
+    object qryProductTELEFONE3: TStringField
+      FieldName = 'TELEFONE3'
+      Origin = 'TELEFONE3'
+    end
+    object qryProductTELEFONE4: TStringField
+      FieldName = 'TELEFONE4'
+      Origin = 'TELEFONE4'
+    end
+    object qryProductENDERECO: TStringField
+      FieldName = 'ENDERECO'
+      Origin = 'ENDERECO'
+      Size = 60
+    end
+    object qryProductNUMERO: TStringField
+      FieldName = 'NUMERO'
+      Origin = 'NUMERO'
+      Size = 10
+    end
+    object qryProductCOMPLEMENTO: TStringField
+      FieldName = 'COMPLEMENTO'
+      Origin = 'COMPLEMENTO'
+      Size = 30
+    end
+    object qryProductBAIRRO: TStringField
+      FieldName = 'BAIRRO'
+      Origin = 'BAIRRO'
+      Size = 50
+    end
+    object qryProductCIDADE: TStringField
+      FieldName = 'CIDADE'
+      Origin = 'CIDADE'
+      Size = 50
+    end
+    object qryProductUF: TStringField
+      FieldName = 'UF'
+      Origin = 'UF'
+      FixedChar = True
+      Size = 2
+    end
+    object qryProductCEP: TStringField
+      FieldName = 'CEP'
+      Origin = 'CEP'
+      Size = 8
+    end
+    object qryProductIMPLANTADO: TStringField
+      FieldName = 'IMPLANTADO'
+      Origin = 'IMPLANTADO'
+      FixedChar = True
+      Size = 1
+    end
+    object qryProductDATAIMPLANTADO: TDateField
+      FieldName = 'DATAIMPLANTADO'
+      Origin = 'DATAIMPLANTADO'
+    end
+    object qryProductNF: TIntegerField
+      FieldName = 'NF'
+      Origin = 'NF'
+    end
+    object qryProductVALIDADE: TDateField
+      FieldName = 'VALIDADE'
+      Origin = 'VALIDADE'
+    end
+    object qryProductSILICONE: TStringField
+      FieldName = 'SILICONE'
+      Origin = 'SILICONE'
+      FixedChar = True
+      Size = 1
+    end
+    object qryProductISENTO_ICMS: TStringField
+      FieldName = 'ISENTO_ICMS'
+      Origin = 'ISENTO_ICMS'
+      FixedChar = True
+      Size = 1
+    end
+    object qryProductISENTO_IPI: TStringField
+      FieldName = 'ISENTO_IPI'
+      Origin = 'ISENTO_IPI'
+      FixedChar = True
+      Size = 1
+    end
+    object qryProductLOC1: TStringField
+      FieldName = 'LOC1'
+      Origin = 'LOC1'
+      Size = 4
+    end
+    object qryProductLOC2: TStringField
+      FieldName = 'LOC2'
+      Origin = 'LOC2'
+      Size = 4
+    end
+    object qryProductLOC3: TStringField
+      FieldName = 'LOC3'
+      Origin = 'LOC3'
+      Size = 4
+    end
+    object qryProductLOC4: TStringField
+      FieldName = 'LOC4'
+      Origin = 'LOC4'
+      Size = 4
+    end
+    object qryProductLOC5: TStringField
+      FieldName = 'LOC5'
+      Origin = 'LOC5'
+      Size = 4
+    end
+    object qryProductLOC6: TStringField
+      FieldName = 'LOC6'
+      Origin = 'LOC6'
+      Size = 4
+    end
+    object qryProductLOC7: TStringField
+      FieldName = 'LOC7'
+      Origin = 'LOC7'
+      Size = 4
+    end
+    object qryProductLOC8: TStringField
+      FieldName = 'LOC8'
+      Origin = 'LOC8'
+      Size = 4
+    end
+    object qryProductREFTECNICA: TStringField
+      FieldName = 'REFTECNICA'
+      Origin = 'REFTECNICA'
+      Size = 9
+    end
+    object qryProductVOLTAGEM: TStringField
+      FieldName = 'VOLTAGEM'
+      Origin = 'VOLTAGEM'
+    end
+    object qryProductPOTENCIA: TStringField
+      FieldName = 'POTENCIA'
+      Origin = 'POTENCIA'
+    end
+    object qryProductNVE1: TStringField
+      FieldName = 'NVE1'
+      Origin = 'NVE1'
+      Size = 8
+    end
+    object qryProductNVE2: TStringField
+      FieldName = 'NVE2'
+      Origin = 'NVE2'
+      Size = 8
+    end
+    object qryProductNVE3: TStringField
+      FieldName = 'NVE3'
+      Origin = 'NVE3'
+      Size = 8
+    end
+    object qryProductNVE4: TStringField
+      FieldName = 'NVE4'
+      Origin = 'NVE4'
+      Size = 8
+    end
+    object qryProductNVE5: TStringField
+      FieldName = 'NVE5'
+      Origin = 'NVE5'
+      Size = 8
+    end
+    object qryProductNVE6: TStringField
+      FieldName = 'NVE6'
+      Origin = 'NVE6'
+      Size = 8
+    end
+    object qryProductNVE7: TStringField
+      FieldName = 'NVE7'
+      Origin = 'NVE7'
+      Size = 8
+    end
+    object qryProductNVE8: TStringField
+      FieldName = 'NVE8'
+      Origin = 'NVE8'
+      Size = 8
+    end
+    object qryProductCODAGRUPADOR: TStringField
+      FieldName = 'CODAGRUPADOR'
+      Origin = 'CODAGRUPADOR'
+      Size = 13
+    end
+    object qryProductID: TIntegerField
+      FieldName = 'ID'
+      Origin = 'ID'
+    end
+    object qryProductVLRFRETE: TFloatField
+      FieldName = 'VLRFRETE'
+      Origin = 'VLRFRETE'
+    end
+    object qryProductCHAVE: TStringField
+      FieldName = 'CHAVE'
+      Origin = 'CHAVE'
+      Size = 44
+    end
+    object qryProductNASCIMENTO: TDateField
+      FieldName = 'NASCIMENTO'
+      Origin = 'NASCIMENTO'
+    end
+    object qryProductORDEM1: TStringField
+      FieldName = 'ORDEM1'
+      Origin = 'ORDEM1'
+      Size = 10
+    end
+    object qryProductORDEM2: TIntegerField
+      FieldName = 'ORDEM2'
+      Origin = 'ORDEM2'
+    end
+    object qryProductORDEM3: TIntegerField
+      FieldName = 'ORDEM3'
+      Origin = 'ORDEM3'
+    end
+    object qryProductPROMOCAO: TStringField
+      FieldName = 'PROMOCAO'
+      Origin = 'PROMOCAO'
+      FixedChar = True
+      Size = 1
+    end
+    object qryProductCFOPINT: TIntegerField
+      FieldName = 'CFOPINT'
+      Origin = 'CFOPINT'
+    end
+    object qryProductCFOPEXT: TIntegerField
+      FieldName = 'CFOPEXT'
+      Origin = 'CFOPEXT'
+    end
+    object qryProductSEMDESC: TStringField
+      FieldName = 'SEMDESC'
+      Origin = 'SEMDESC'
+      FixedChar = True
+      Size = 1
+    end
+    object qryProductCUSTOREPRESENTACAO: TFloatField
+      FieldName = 'CUSTOREPRESENTACAO'
+      Origin = 'CUSTOREPRESENTACAO'
+    end
+    object qryProductVIDRO: TStringField
+      FieldName = 'VIDRO'
+      Origin = 'VIDRO'
+      FixedChar = True
+      Size = 1
+    end
+    object qryProductINDESCALA: TIntegerField
+      FieldName = 'INDESCALA'
+      Origin = 'INDESCALA'
+    end
+    object qryProductCBENEF: TStringField
+      FieldName = 'CBENEF'
+      Origin = 'CBENEF'
+      Size = 10
+    end
+    object qryProductCODGRUPOTRIB2: TIntegerField
+      FieldName = 'CODGRUPOTRIB2'
+      Origin = 'CODGRUPOTRIB2'
+    end
+    object qryProductCODMENSAGEM2: TIntegerField
+      FieldName = 'CODMENSAGEM2'
+      Origin = 'CODMENSAGEM2'
+    end
+    object qryProductCFOPCUPOM: TIntegerField
+      FieldName = 'CFOPCUPOM'
+      Origin = 'CFOPCUPOM'
+    end
+    object qryProductNCM: TStringField
+      FieldName = 'NCM'
+      Origin = 'NCM'
+    end
+    object qryProductCEST: TStringField
+      FieldName = 'CEST'
+      Origin = 'CEST'
+    end
+    object qryProductNOMEARQUIVO: TStringField
+      FieldName = 'NOMEARQUIVO'
+      Origin = 'NOMEARQUIVO'
+      Size = 100
+    end
+    object qryProductNGRUPO: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'NGRUPO'
+      Origin = 'DESCRICAO'
+      ProviderFlags = []
+      ReadOnly = True
+      Size = 40
+    end
+    object qryProductNSUBGRUPO: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'NSUBGRUPO'
+      Origin = 'DESCRICAO'
+      ProviderFlags = []
+      ReadOnly = True
+      Size = 40
+    end
+    object qryProductSUBTIPO: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'SUBTIPO'
+      Origin = 'TIPO'
+      ProviderFlags = []
+      ReadOnly = True
+      Size = 5
+    end
+    object qryProductSUBPONTAESTOQUE: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'SUBPONTAESTOQUE'
+      Origin = 'PONTAESTOQUE'
+      ProviderFlags = []
+      ReadOnly = True
+      FixedChar = True
+      Size = 1
+    end
+    object qryProductGRUPORESUMO: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'GRUPORESUMO'
+      Origin = 'RESUMO'
+      ProviderFlags = []
+      ReadOnly = True
+      Size = 10
+    end
+    object qryProductGRUPOORDEM: TIntegerField
+      AutoGenerateValue = arDefault
+      FieldName = 'GRUPOORDEM'
+      Origin = 'ORDEM'
+      ProviderFlags = []
+      ReadOnly = True
+    end
+  end
+  object dspProduct: TDataSetProvider
+    DataSet = qryProduct
+    Options = [poAllowCommandText, poUseQuoteChar]
+    Left = 175
+    Top = 98
+  end
+  object cdsProduct: TClientDataSet
+    Aggregates = <>
+    Params = <>
+    ProviderName = 'dspProduct'
+    Left = 175
+    Top = 162
+    object cdsProductREFERENCIA: TStringField
+      FieldName = 'REFERENCIA'
+      Required = True
+      Size = 13
+    end
+    object cdsProductTIPO: TIntegerField
+      FieldName = 'TIPO'
+    end
+    object cdsProductDESCRICAO1: TStringField
+      FieldName = 'DESCRICAO1'
+      Size = 60
+    end
+    object cdsProductDESCRICAO2: TStringField
+      FieldName = 'DESCRICAO2'
+      Size = 60
+    end
+    object cdsProductDESCRICAO3: TStringField
+      FieldName = 'DESCRICAO3'
+      Size = 15
+    end
+    object cdsProductCODGRUPO: TIntegerField
+      FieldName = 'CODGRUPO'
+    end
+    object cdsProductCODSUBGRUPO: TIntegerField
+      FieldName = 'CODSUBGRUPO'
+    end
+    object cdsProductUNIDADEMEDIDA: TStringField
+      FieldName = 'UNIDADEMEDIDA'
+      Size = 3
+    end
+    object cdsProductEMBALAGEM: TStringField
+      FieldName = 'EMBALAGEM'
+      Size = 10
+    end
+    object cdsProductVAREJO: TStringField
+      FieldName = 'VAREJO'
+      FixedChar = True
+      Size = 1
+    end
+    object cdsProductVLR1: TFloatField
+      FieldName = 'VLR1'
+    end
+    object cdsProductVLR2: TFloatField
+      FieldName = 'VLR2'
+    end
+    object cdsProductVLR3: TFloatField
+      FieldName = 'VLR3'
+    end
+    object cdsProductVLR4: TFloatField
+      FieldName = 'VLR4'
+    end
+    object cdsProductVLR5: TFloatField
+      FieldName = 'VLR5'
+    end
+    object cdsProductVLR6: TFloatField
+      FieldName = 'VLR6'
+    end
+    object cdsProductQTDEMEDIAP: TFloatField
+      FieldName = 'QTDEMEDIAP'
+    end
+    object cdsProductESTMINIMO: TFloatField
+      FieldName = 'ESTMINIMO'
+    end
+    object cdsProductESTMAXIMO: TFloatField
+      FieldName = 'ESTMAXIMO'
+    end
+    object cdsProductPESOLIQUIDO: TFloatField
+      FieldName = 'PESOLIQUIDO'
+    end
+    object cdsProductPESOBRUTO: TFloatField
+      FieldName = 'PESOBRUTO'
+    end
+    object cdsProductABREVPESO: TStringField
+      FieldName = 'ABREVPESO'
+      Size = 3
+    end
+    object cdsProductCODCLASFISCAL: TStringField
+      FieldName = 'CODCLASFISCAL'
+      Size = 2
+    end
+    object cdsProductCONTROLE: TStringField
+      FieldName = 'CONTROLE'
+      FixedChar = True
+      Size = 1
+    end
+    object cdsProductPERCIPI: TFloatField
+      FieldName = 'PERCIPI'
+    end
+    object cdsProductPERCICMS: TFloatField
+      FieldName = 'PERCICMS'
+    end
+    object cdsProductPERCQUEBRA: TFloatField
+      FieldName = 'PERCQUEBRA'
+    end
+    object cdsProductCOMISVLRVISTA: TFloatField
+      FieldName = 'COMISVLRVISTA'
+    end
+    object cdsProductCOMISVLRPRAZO: TFloatField
+      FieldName = 'COMISVLRPRAZO'
+    end
+    object cdsProductCODFORNECEDOR1: TIntegerField
+      FieldName = 'CODFORNECEDOR1'
+    end
+    object cdsProductCODFORNECEDOR2: TIntegerField
+      FieldName = 'CODFORNECEDOR2'
+    end
+    object cdsProductCODFORNECEDOR3: TIntegerField
+      FieldName = 'CODFORNECEDOR3'
+    end
+    object cdsProductCODFORNECEDOR4: TIntegerField
+      FieldName = 'CODFORNECEDOR4'
+    end
+    object cdsProductCODFORNECEDOR5: TIntegerField
+      FieldName = 'CODFORNECEDOR5'
+    end
+    object cdsProductSITUACAO: TIntegerField
+      FieldName = 'SITUACAO'
+    end
+    object cdsProductTAM1: TStringField
+      FieldName = 'TAM1'
+      Size = 2
+    end
+    object cdsProductTAM2: TStringField
+      FieldName = 'TAM2'
+      Size = 2
+    end
+    object cdsProductTAM3: TStringField
+      FieldName = 'TAM3'
+      Size = 2
+    end
+    object cdsProductTAM4: TStringField
+      FieldName = 'TAM4'
+      Size = 2
+    end
+    object cdsProductTAM5: TStringField
+      FieldName = 'TAM5'
+      Size = 2
+    end
+    object cdsProductTAM6: TStringField
+      FieldName = 'TAM6'
+      Size = 2
+    end
+    object cdsProductTAM7: TStringField
+      FieldName = 'TAM7'
+      Size = 2
+    end
+    object cdsProductTAM8: TStringField
+      FieldName = 'TAM8'
+      Size = 2
+    end
+    object cdsProductTAM9: TStringField
+      FieldName = 'TAM9'
+      Size = 2
+    end
+    object cdsProductREG: TIntegerField
+      FieldName = 'REG'
+    end
+    object cdsProductUSUARIO: TStringField
+      FieldName = 'USUARIO'
+      Size = 15
+    end
+    object cdsProductVLR7: TFloatField
+      FieldName = 'VLR7'
+    end
+    object cdsProductVLR8: TFloatField
+      FieldName = 'VLR8'
+    end
+    object cdsProductCODPROCEDENCIA: TStringField
+      FieldName = 'CODPROCEDENCIA'
+      FixedChar = True
+      Size = 1
+    end
+    object cdsProductDESCRICAO4: TStringField
+      FieldName = 'DESCRICAO4'
+      Size = 15
+    end
+    object cdsProductTAM10: TStringField
+      FieldName = 'TAM10'
+      Size = 2
+    end
+    object cdsProductTAM11: TStringField
+      FieldName = 'TAM11'
+      Size = 2
+    end
+    object cdsProductTAM12: TStringField
+      FieldName = 'TAM12'
+      Size = 12
+    end
+    object cdsProductTAM13: TStringField
+      FieldName = 'TAM13'
+      Size = 14
+    end
+    object cdsProductTAM14: TStringField
+      FieldName = 'TAM14'
+      Size = 1
+    end
+    object cdsProductTAM15: TStringField
+      FieldName = 'TAM15'
+      Size = 2
+    end
+    object cdsProductCODICMS: TStringField
+      FieldName = 'CODICMS'
+      FixedChar = True
+      Size = 1
+    end
+    object cdsProductCODIPI: TStringField
+      FieldName = 'CODIPI'
+      FixedChar = True
+      Size = 1
+    end
+    object cdsProductMOEDA: TStringField
+      FieldName = 'MOEDA'
+      Size = 6
+    end
+    object cdsProductCONTACONTABIL: TStringField
+      FieldName = 'CONTACONTABIL'
+      Size = 15
+    end
+    object cdsProductREFERENCIA2: TStringField
+      FieldName = 'REFERENCIA2'
+      Size = 13
+    end
+    object cdsProductCODCOLECAO: TIntegerField
+      FieldName = 'CODCOLECAO'
+    end
+    object cdsProductDATAULTMOV: TDateField
+      FieldName = 'DATAULTMOV'
+    end
+    object cdsProductCAMINHO: TStringField
+      FieldName = 'CAMINHO'
+      Size = 300
+    end
+    object cdsProductTAMANHO: TStringField
+      FieldName = 'TAMANHO'
+      Size = 3
+    end
+    object cdsProductTAMANHO1: TStringField
+      FieldName = 'TAMANHO1'
+      Size = 3
+    end
+    object cdsProductVLR9: TFloatField
+      FieldName = 'VLR9'
+    end
+    object cdsProductVLR10: TFloatField
+      FieldName = 'VLR10'
+    end
+    object cdsProductVLR11: TFloatField
+      FieldName = 'VLR11'
+    end
+    object cdsProductVLR12: TFloatField
+      FieldName = 'VLR12'
+    end
+    object cdsProductCODMENSAGEM: TIntegerField
+      FieldName = 'CODMENSAGEM'
+    end
+    object cdsProductCODGRUPOTRIB: TIntegerField
+      FieldName = 'CODGRUPOTRIB'
+    end
+    object cdsProductIMAGEM: TBlobField
+      FieldName = 'IMAGEM'
+    end
+    object cdsProductREFFORNECEDOR: TStringField
+      FieldName = 'REFFORNECEDOR'
+    end
+    object cdsProductALIQUOTAECF: TSingleField
+      FieldName = 'ALIQUOTAECF'
+    end
+    object cdsProductTRIBUTACAOECF: TIntegerField
+      FieldName = 'TRIBUTACAOECF'
+    end
+    object cdsProductPRECOCUSTO: TFloatField
+      FieldName = 'PRECOCUSTO'
+    end
+    object cdsProductLUCRO: TFloatField
+      FieldName = 'LUCRO'
+    end
+    object cdsProductVLREMBALAGEM: TFloatField
+      FieldName = 'VLREMBALAGEM'
+    end
+    object cdsProductVLRSEGURO: TFloatField
+      FieldName = 'VLRSEGURO'
+    end
+    object cdsProductFRETE: TFloatField
+      FieldName = 'FRETE'
+    end
+    object cdsProductIP: TFloatField
+      FieldName = 'IP'
+    end
+    object cdsProductICMS: TFloatField
+      FieldName = 'ICMS'
+    end
+    object cdsProductSUBTOTAL: TFloatField
+      FieldName = 'SUBTOTAL'
+    end
+    object cdsProductTOTAL: TFloatField
+      FieldName = 'TOTAL'
+    end
+    object cdsProductCOD_ICMS: TIntegerField
+      FieldName = 'COD_ICMS'
+    end
+    object cdsProductCODBARRAS: TStringField
+      FieldName = 'CODBARRAS'
+      Size = 14
+    end
+    object cdsProductOBS: TStringField
+      FieldName = 'OBS'
+      Size = 3000
+    end
+    object cdsProductCODMENSAGEM1: TIntegerField
+      FieldName = 'CODMENSAGEM1'
+    end
+    object cdsProductCODGRUPOTRIB1: TIntegerField
+      FieldName = 'CODGRUPOTRIB1'
+    end
+    object cdsProductDATACADASTRO: TDateField
+      FieldName = 'DATACADASTRO'
+    end
+    object cdsProductDATAALTERACAO: TDateField
+      FieldName = 'DATAALTERACAO'
+    end
+    object cdsProductFINALIDADE: TIntegerField
+      FieldName = 'FINALIDADE'
+    end
+    object cdsProductCOD_LST: TStringField
+      FieldName = 'COD_LST'
+      Size = 4
+    end
+    object cdsProductIDENT_MERC: TIntegerField
+      FieldName = 'IDENT_MERC'
+    end
+    object cdsProductCARACTERISTICAS: TStringField
+      FieldName = 'CARACTERISTICAS'
+      Size = 255
+    end
+    object cdsProductCOD_PRNC: TStringField
+      FieldName = 'COD_PRNC'
+      Size = 13
+    end
+    object cdsProductCOD_CTA: TStringField
+      FieldName = 'COD_CTA'
+      Size = 60
+    end
+    object cdsProductNR_PARC: TIntegerField
+      FieldName = 'NR_PARC'
+    end
+    object cdsProductCOD_CCUS: TStringField
+      FieldName = 'COD_CCUS'
+      Size = 60
+    end
+    object cdsProductFUNC: TStringField
+      FieldName = 'FUNC'
+      Size = 255
+    end
+    object cdsProductVIDAUTIL: TIntegerField
+      FieldName = 'VIDAUTIL'
+    end
+    object cdsProductUNIDADEMEDIDA1: TStringField
+      FieldName = 'UNIDADEMEDIDA1'
+      Size = 3
+    end
+    object cdsProductFATOR: TFloatField
+      FieldName = 'FATOR'
+    end
+    object cdsProductCODIGO: TIntegerField
+      FieldName = 'CODIGO'
+    end
+    object cdsProductESTOQUE: TIntegerField
+      FieldName = 'ESTOQUE'
+    end
+    object cdsProductPACIENTE: TStringField
+      FieldName = 'PACIENTE'
+      Size = 50
+    end
+    object cdsProductCPF: TStringField
+      FieldName = 'CPF'
+      Size = 11
+    end
+    object cdsProductEMAIL: TStringField
+      FieldName = 'EMAIL'
+      Size = 100
+    end
+    object cdsProductTELEFONE1: TStringField
+      FieldName = 'TELEFONE1'
+    end
+    object cdsProductTELEFONE2: TStringField
+      FieldName = 'TELEFONE2'
+    end
+    object cdsProductTELEFONE3: TStringField
+      FieldName = 'TELEFONE3'
+    end
+    object cdsProductTELEFONE4: TStringField
+      FieldName = 'TELEFONE4'
+    end
+    object cdsProductENDERECO: TStringField
+      FieldName = 'ENDERECO'
+      Size = 60
+    end
+    object cdsProductNUMERO: TStringField
+      FieldName = 'NUMERO'
+      Size = 10
+    end
+    object cdsProductCOMPLEMENTO: TStringField
+      FieldName = 'COMPLEMENTO'
+      Size = 30
+    end
+    object cdsProductBAIRRO: TStringField
+      FieldName = 'BAIRRO'
+      Size = 50
+    end
+    object cdsProductCIDADE: TStringField
+      FieldName = 'CIDADE'
+      Size = 50
+    end
+    object cdsProductUF: TStringField
+      FieldName = 'UF'
+      FixedChar = True
+      Size = 2
+    end
+    object cdsProductCEP: TStringField
+      FieldName = 'CEP'
+      Size = 8
+    end
+    object cdsProductIMPLANTADO: TStringField
+      FieldName = 'IMPLANTADO'
+      FixedChar = True
+      Size = 1
+    end
+    object cdsProductDATAIMPLANTADO: TDateField
+      FieldName = 'DATAIMPLANTADO'
+    end
+    object cdsProductNF: TIntegerField
+      FieldName = 'NF'
+    end
+    object cdsProductVALIDADE: TDateField
+      FieldName = 'VALIDADE'
+    end
+    object cdsProductSILICONE: TStringField
+      FieldName = 'SILICONE'
+      FixedChar = True
+      Size = 1
+    end
+    object cdsProductISENTO_ICMS: TStringField
+      FieldName = 'ISENTO_ICMS'
+      FixedChar = True
+      Size = 1
+    end
+    object cdsProductISENTO_IPI: TStringField
+      FieldName = 'ISENTO_IPI'
+      FixedChar = True
+      Size = 1
+    end
+    object cdsProductLOC1: TStringField
+      FieldName = 'LOC1'
+      Size = 4
+    end
+    object cdsProductLOC2: TStringField
+      FieldName = 'LOC2'
+      Size = 4
+    end
+    object cdsProductLOC3: TStringField
+      FieldName = 'LOC3'
+      Size = 4
+    end
+    object cdsProductLOC4: TStringField
+      FieldName = 'LOC4'
+      Size = 4
+    end
+    object cdsProductLOC5: TStringField
+      FieldName = 'LOC5'
+      Size = 4
+    end
+    object cdsProductLOC6: TStringField
+      FieldName = 'LOC6'
+      Size = 4
+    end
+    object cdsProductLOC7: TStringField
+      FieldName = 'LOC7'
+      Size = 4
+    end
+    object cdsProductLOC8: TStringField
+      FieldName = 'LOC8'
+      Size = 4
+    end
+    object cdsProductREFTECNICA: TStringField
+      FieldName = 'REFTECNICA'
+      Size = 9
+    end
+    object cdsProductVOLTAGEM: TStringField
+      FieldName = 'VOLTAGEM'
+    end
+    object cdsProductPOTENCIA: TStringField
+      FieldName = 'POTENCIA'
+    end
+    object cdsProductNVE1: TStringField
+      FieldName = 'NVE1'
+      Size = 8
+    end
+    object cdsProductNVE2: TStringField
+      FieldName = 'NVE2'
+      Size = 8
+    end
+    object cdsProductNVE3: TStringField
+      FieldName = 'NVE3'
+      Size = 8
+    end
+    object cdsProductNVE4: TStringField
+      FieldName = 'NVE4'
+      Size = 8
+    end
+    object cdsProductNVE5: TStringField
+      FieldName = 'NVE5'
+      Size = 8
+    end
+    object cdsProductNVE6: TStringField
+      FieldName = 'NVE6'
+      Size = 8
+    end
+    object cdsProductNVE7: TStringField
+      FieldName = 'NVE7'
+      Size = 8
+    end
+    object cdsProductNVE8: TStringField
+      FieldName = 'NVE8'
+      Size = 8
+    end
+    object cdsProductCODAGRUPADOR: TStringField
+      FieldName = 'CODAGRUPADOR'
+      Size = 13
+    end
+    object cdsProductID: TIntegerField
+      FieldName = 'ID'
+    end
+    object cdsProductVLRFRETE: TFloatField
+      FieldName = 'VLRFRETE'
+    end
+    object cdsProductCHAVE: TStringField
+      FieldName = 'CHAVE'
+      Size = 44
+    end
+    object cdsProductNASCIMENTO: TDateField
+      FieldName = 'NASCIMENTO'
+    end
+    object cdsProductORDEM1: TStringField
+      FieldName = 'ORDEM1'
+      Size = 10
+    end
+    object cdsProductORDEM2: TIntegerField
+      FieldName = 'ORDEM2'
+    end
+    object cdsProductORDEM3: TIntegerField
+      FieldName = 'ORDEM3'
+    end
+    object cdsProductPROMOCAO: TStringField
+      FieldName = 'PROMOCAO'
+      FixedChar = True
+      Size = 1
+    end
+    object cdsProductCFOPINT: TIntegerField
+      FieldName = 'CFOPINT'
+    end
+    object cdsProductCFOPEXT: TIntegerField
+      FieldName = 'CFOPEXT'
+    end
+    object cdsProductSEMDESC: TStringField
+      FieldName = 'SEMDESC'
+      FixedChar = True
+      Size = 1
+    end
+    object cdsProductCUSTOREPRESENTACAO: TFloatField
+      FieldName = 'CUSTOREPRESENTACAO'
+    end
+    object cdsProductVIDRO: TStringField
+      FieldName = 'VIDRO'
+      FixedChar = True
+      Size = 1
+    end
+    object cdsProductINDESCALA: TIntegerField
+      FieldName = 'INDESCALA'
+    end
+    object cdsProductCBENEF: TStringField
+      FieldName = 'CBENEF'
+      Size = 10
+    end
+    object cdsProductCODGRUPOTRIB2: TIntegerField
+      FieldName = 'CODGRUPOTRIB2'
+    end
+    object cdsProductCODMENSAGEM2: TIntegerField
+      FieldName = 'CODMENSAGEM2'
+    end
+    object cdsProductCFOPCUPOM: TIntegerField
+      FieldName = 'CFOPCUPOM'
+    end
+    object cdsProductNCM: TStringField
+      FieldName = 'NCM'
+    end
+    object cdsProductCEST: TStringField
+      FieldName = 'CEST'
+    end
+    object cdsProductNOMEARQUIVO: TStringField
+      FieldName = 'NOMEARQUIVO'
+      Size = 100
+    end
+    object cdsProductNGRUPO: TStringField
+      FieldName = 'NGRUPO'
+      ReadOnly = True
+      Size = 40
+    end
+    object cdsProductNSUBGRUPO: TStringField
+      FieldName = 'NSUBGRUPO'
+      ReadOnly = True
+      Size = 40
+    end
+    object cdsProductSUBTIPO: TStringField
+      FieldName = 'SUBTIPO'
+      ReadOnly = True
+      Size = 5
+    end
+    object cdsProductSUBPONTAESTOQUE: TStringField
+      FieldName = 'SUBPONTAESTOQUE'
+      ReadOnly = True
+      FixedChar = True
+      Size = 1
+    end
+    object cdsProductGRUPORESUMO: TStringField
+      FieldName = 'GRUPORESUMO'
+      ReadOnly = True
+      Size = 10
+    end
+    object cdsProductGRUPOORDEM: TIntegerField
+      FieldName = 'GRUPOORDEM'
+      ReadOnly = True
+    end
+  end
+  object RESTClient1: TRESTClient
+    Accept = 'application/json, text/plain; q=0.9, text/html;q=0.8,'
+    AcceptCharset = 'UTF-8, *;q=0.8'
+    AcceptEncoding = 'identity'
+    BaseURL = 'http://192.168.1.7/api'
+    Params = <>
+    HandleRedirects = True
+    Left = 40
+    Top = 397
+  end
+  object RESTRequestClient: TRESTRequest
+    Client = RESTClient1
+    Method = rmPOST
+    Params = <
+      item
+        name = 'param'
+        ContentType = ctAPPLICATION_JSON
+      end>
+    Response = RESTResponseClient
+    SynchronizedEvents = False
+    Left = 144
+    Top = 397
+  end
+  object RESTResponseClient: TRESTResponse
+    Left = 144
+    Top = 469
+  end
+  object RESTRequestProduct: TRESTRequest
+    Client = RESTClient1
+    Method = rmPOST
+    Params = <
+      item
+        name = 'param'
+        ContentType = ctAPPLICATION_JSON
+      end>
+    Response = RESTResponseProduct
+    SynchronizedEvents = False
+    Left = 288
+    Top = 397
+  end
+  object RESTResponseProduct: TRESTResponse
+    ContentType = 'application/json'
+    Left = 288
+    Top = 468
+  end
+end

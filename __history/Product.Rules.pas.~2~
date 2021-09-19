@@ -1,0 +1,80 @@
+unit Product.Rules;
+
+interface
+
+uses
+  Rules.Interfaces, Components.Model, REST.Json,
+  SysUtils, REST.Types, Vcl.Dialogs, Product.Model;
+
+type
+  TProductRules = class(TInterfacedObject, iRules)
+    private
+      json : String;
+      prodModel : TProductModel;
+      procedure Send(pOperation : String);
+    public
+      constructor Create;
+      destructor Destroy; override;
+      procedure Generate(pId, pOperation : String);
+  end;
+
+implementation
+
+{ TProductRules }
+
+constructor TProductRules.Create;
+begin
+
+end;
+
+destructor TProductRules.Destroy;
+begin
+
+  inherited;
+end;
+
+procedure TProductRules.Generate(pId, pOperation : String);
+begin
+with dmComponentes do
+  begin
+    dmComponentes.BuscarProduto(pReferencia);
+    prodModel := TProductModel.Create;
+    prodModel.ProId    := cdsProduct.AsString;
+    prodModel.ProIdCategoria      := cdsProdutoCODGRUPO.Value;
+    prodModel.ProNome   := cdsProdutoCODSUBGRUPO.Value;
+    prodModel.ProPreco    := cdsProdutoDESCRICAO1.AsString;
+    prodModel.ProUnidade    := cdsProdutoDESCRICAO2.AsString;
+
+    json := TJson.ObjectToJsonString(prodModel);
+  end;
+  send(pOperacao);
+end;
+
+procedure TProductRules.Send(pOperation : String);
+begin
+  try
+    with dmComponentes do
+    begin
+      if pOperation = 'DE' then
+        RESTRequestProduct.Method := rmDELETE;
+      if pOperation = 'UP' then
+        RESTRequestProduct.Method := rmPUT;
+      if pOperation = 'IN' then
+        RESTRequestProduct.Method := rmPost;
+
+      RESTRequestProduct.Resource := 'Produto';
+      RESTRequestProduct.Params.ParameterByName('param').Value := json;
+      RESTRequestProduct.Execute;
+      if (RESTResponseProduct.StatusText <> 'HTTP/1.1 200 OK') then
+        ShowMessage('Erro' + RESTResponseProduct.StatusText);
+    end;
+  except
+    on E: Exception do
+    begin
+      ShowMessage('Erro' + E.Message);
+    end;
+  end;
+end;
+
+
+end.
