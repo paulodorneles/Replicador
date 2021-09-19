@@ -4,11 +4,14 @@ interface
 
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
-  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ExtCtrls;
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ExtCtrls, FireDAC.Stan.Def,
+  FireDAC.VCLUI.Wait, FireDAC.Phys.ADSWrapper, FireDAC.Stan.Async,
+  FireDAC.Stan.Intf, FireDAC.Phys, FireDAC.Phys.ADS;
 
 type
   TForm1 = class(TForm)
     Timer1: TTimer;
+    FDADSRestore1: TFDADSRestore;
     procedure FormCreate(Sender: TObject);
     procedure Timer1Timer(Sender: TObject);
   private

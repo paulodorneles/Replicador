@@ -20,4 +20,8 @@ object Form1: TForm1
     Left = 160
     Top = 88
   end
+  object FDADSRestore1: TFDADSRestore
+    Left = 240
+    Top = 160
+  end
 end
